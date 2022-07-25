@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>NHSAPI.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #a9b7c6;}
+.s1 { color: #808080;}
+.s2 { color: #cc7832;}
+.s3 { color: #6a8759;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+NHSAPI.py</font>
+</center></td></tr></table>
+<pre>
+<span class="s1">#####API FOR PROJECT?????</span>
+<span class="s2">from </span><span class="s0">requests </span><span class="s2">import </span><span class="s0">get</span>
+<span class="s2">from </span><span class="s0">json </span><span class="s2">import </span><span class="s0">dumps</span>
+<span class="s2">from </span><span class="s0">pprint </span><span class="s2">import </span><span class="s0">pprint </span><span class="s2">as </span><span class="s0">pp</span>
+
+
+<span class="s0">ENDPOINT = </span><span class="s3">&quot;https://api.coronavirus.data.gov.uk/v1/data&quot;</span>
+<span class="s0">AREA_TYPE = </span><span class="s3">&quot;ltla&quot;</span>
+<span class="s0">AREA_NAME = </span><span class="s3">&quot;South somerset&quot;</span>
+<span class="s0">DATE = </span><span class="s3">&quot;2020-04-24&quot;</span>
+
+<span class="s0">filters = [</span>
+    <span class="s3">f&quot;areaType=</span><span class="s2">{ </span><span class="s0">AREA_TYPE </span><span class="s2">}</span><span class="s3">&quot;</span><span class="s2">,</span>
+    <span class="s3">f&quot;areaName=</span><span class="s2">{ </span><span class="s0">AREA_NAME </span><span class="s2">}</span><span class="s3">&quot;</span>
+    <span class="s3">f&quot;date=</span><span class="s2">{</span><span class="s0">DATE</span><span class="s2">}</span><span class="s3">&quot;</span>
+<span class="s0">]</span>
+
+<span class="s0">structure = {</span>
+    <span class="s3">&quot;date&quot;</span><span class="s0">: </span><span class="s3">&quot;date&quot;</span><span class="s2">,</span>
+    <span class="s3">&quot;name&quot;</span><span class="s0">: </span><span class="s3">&quot;areaName&quot;</span><span class="s2">,</span>
+    <span class="s3">&quot;code&quot;</span><span class="s0">: </span><span class="s3">&quot;areaCode&quot;</span><span class="s2">,</span>
+    <span class="s3">&quot;dailyCases&quot;</span><span class="s0">: </span><span class="s3">&quot;newCasesByPublishDate&quot;</span><span class="s2">,</span>
+    <span class="s1"># &quot;cumulativeCases&quot;: &quot;cumCasesByPublishDate&quot;,</span>
+    <span class="s3">&quot;dailyDeaths&quot;</span><span class="s0">: </span><span class="s3">&quot;newDeaths28DaysByPublishDate&quot;</span><span class="s2">,</span>
+    <span class="s1"># &quot;cumulativeDeaths&quot;: &quot;cumDeaths28DaysByPublishDate&quot;</span>
+<span class="s0">}</span>
+
+<span class="s0">api_params = {</span>
+    <span class="s3">&quot;filters&quot;</span><span class="s0">: str.join(</span><span class="s3">&quot;;&quot;</span><span class="s2">, </span><span class="s0">filters)</span><span class="s2">,</span>
+    <span class="s3">&quot;structure&quot;</span><span class="s0">: dumps(structure</span><span class="s2">, </span><span class="s0">separators=(</span><span class="s3">&quot;,&quot;</span><span class="s2">, </span><span class="s3">&quot;:&quot;</span><span class="s0">))</span>
+<span class="s0">}</span>
+
+
+<span class="s0">response = get(ENDPOINT</span><span class="s2">, </span><span class="s0">params=api_params</span><span class="s2">, </span><span class="s0">timeout=</span><span class="s4">10</span><span class="s0">)</span>
+
+<span class="s2">if </span><span class="s0">response.status_code &gt;= </span><span class="s4">400</span><span class="s0">:</span>
+    <span class="s2">raise </span><span class="s0">RuntimeError(</span><span class="s3">f'Request failed: </span><span class="s2">{ </span><span class="s0">response.text </span><span class="s2">}</span><span class="s3">'</span><span class="s0">)</span>
+
+<span class="s0">print(response.url)</span>
+<span class="s0">pp(response.json())</span>
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</body>
+</html>
