@@ -25,8 +25,8 @@ def get_rate_by_location(location, level):
 
     latest = 0
 
-    for i in range(1, 7):
-        latest += int(result.json()['data'][0]['dailyCases'])
+    for i in range(0, 7):
+        latest += int(result.json()['data'][i]['dailyCases'])
 
     print('weeklyCases:', latest)
 
