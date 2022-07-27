@@ -1,8 +1,57 @@
 import requests
 import json
+import Levenshtein  # This package can measure the similarity between strings
 
 
-def get_rate_by_location(location, level):
+# These locations would be fetched from the database of upper-tier local authorities
+locations = ['salford','barnet','barnsley', 'bath', 'bolton', 'blackpool','camden','dorset', 'sefton', 'sandwell']
+
+
+# Make sure strings are all lowercase, remove white space etc., before using this function
+def get_similar_word(list_of_words, input_word, threshold):
+    # returns a tuple - (probability, [list of similar words])
+    # list contains words, from given set, which are 'closest' to the input word
+    # if no words are close enough (decided by threshold parameter) returns None
+    similarities = [Levenshtein.ratio(x,input_word) for x in locations]
+
+    if max(similarities) >= threshold:
+        max_idx_list = [idx for idx, val in enumerate(similarities) if val == max(similarities)]
+        return max(similarities), [locations[x] for x in max_idx_list]
+
+    return None
+
+
+def get_user_input(given_options):
+    while True:
+        user_input = input("Please enter the name of a UTLA: ").lower().strip()
+        # match format to however locations are in database... or make everything lower for ease
+
+        if user_input in given_options:
+            print("Location {} found!".format(user_input))
+            return user_input
+        else:
+            print("Location {} not found!".format(user_input))
+            similar = get_similar_word(locations, user_input, 0.7)
+
+            if similar is None:  # no matches ..
+                print("No similar locations found. Please try again.")
+                continue
+            else:  # matches were found ..
+
+                for word in similar[1]:
+                    is_similar = input("Did you mean '{}'? y/n  (Probability of match: {:.2f})".format(word, similar[0]))
+                    if is_similar.lower().strip() == "y":
+                        return word
+                    elif is_similar.lower().strip() == "n":
+                        pass
+
+                    # TO DO: deal with invalid inputs here !!!
+
+                print("You have declined all possible matches. Please try again.")
+                continue
+
+
+def get_rate_by_location(location):
     structure = {
         "date": "date",
         "name": "areaName",
@@ -18,8 +67,8 @@ def get_rate_by_location(location, level):
     }
 
     result = requests.get(
-        'https://api.coronavirus.data.gov.uk/v1/data?filters=areaName={};areaType={}&structure='
-        .format(location, level),
+        'https://api.coronavirus.data.gov.uk/v1/data?filters=areaName={};areaType=utla&structure='
+        .format(location),
         params=structure_params
     )
 
@@ -48,12 +97,8 @@ def run():
     print()
 
     try:
-        location = input('What is your location? ')
+        location = get_user_input(locations)  # RETURNS MATCHED WORD
         if location.isnumeric():
-            raise ValueError
-
-        level = input('How specific would you like the area to be? ')
-        if level.isnumeric():
             raise ValueError
 
     except ValueError:
@@ -62,7 +107,7 @@ def run():
 
     print()
 
-    get_rate_by_location(location.title(), level)
+    get_rate_by_location(location.title())
 
     print()
     print('Keep smiling and carry on!')
@@ -72,5 +117,4 @@ if __name__ == '__main__':
     run()
 
 # Example
-# bath and north east somerset
-# utla
+# black pool
