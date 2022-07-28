@@ -33,5 +33,5 @@ def get_cases_by_location(location, level):
     return daily_cases
 
 
-# get_rate_by_location('salford','utla')
+print(get_cases_by_location('fife','utla'))
 
