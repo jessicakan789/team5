@@ -1,8 +1,13 @@
+"""
+API for CFG Project
+NHS COVID API
+link for documentation : https://coronavirus.data.gov.uk/details/developers-guide/generic-api
+
+"""
 import requests
 import json
 
-
-def get_rate_by_location(location):
+def get_cases_by_location(location, level):
     structure = {
         "date": "date",
         "name": "areaName",
@@ -18,16 +23,15 @@ def get_rate_by_location(location):
     }
 
     result = requests.get(
-        'https://api.coronavirus.data.gov.uk/v1/data?filters=areaName={};areaType=utla&structure='
-        .format(location),
+        'https://api.coronavirus.data.gov.uk/v1/data?filters=areaName={};areaType={}&structure='
+        .format(location, level),
         params=structure_params
     )
 
-    latest = 0
+    daily_cases = result.json()['data'][0]['dailyCases']
 
-    for i in range(0, 7):
-        latest += int(result.json()['data'][i]['dailyCases'])
+    return daily_cases
 
-    print('weeklyCases:', latest)
 
-    return latest
+# get_rate_by_location('salford','utla')
+
