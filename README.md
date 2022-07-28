@@ -14,6 +14,7 @@ The COVID calculator is an application that allows users to put in location info
 1. Run main.py
 
 2. Choose one of these areas:
+<https://github.com/jessicakan789/team5/blob/main/utla_area_names.txt>
 * Barking and Dagenham
 * Barnet
 * Barnsley
