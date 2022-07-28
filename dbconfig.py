@@ -1,3 +1,3 @@
 USER = "root"
-PASSWORD = ""
+PASSWORD = input("Please input your SQL password: ")
 HOST = "localhost"

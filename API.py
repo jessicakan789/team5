@@ -30,12 +30,4 @@ def get_rate_by_location(location):
 
     print('weeklyCases:', latest)
 
-    if latest <= 100:
-        print("Your risk of getting COVID is LOW")
-        print("We recommend you wash your hands frequently")
-    if 100 < latest <= 400:
-        print("Your risk of getting COVID is MEDIUM")
-        print("We recommend you wear a mask")
-    if latest > 400:
-        print("Your risk of getting COVID is HIGH")
-        print("We recommend you take a LFD")
+    return latest
