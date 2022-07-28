@@ -20,7 +20,7 @@ The COVID calculator is an application that allows users to put in location info
 3. Find out how likely you are to get COVID
 
 
-# File descriptions
+## File descriptions
 
 | File | Description |
 | ------- | -------------------------- |
