@@ -165,3 +165,17 @@ The COVID calculator is an application that allows users to put in location info
 * York
 
 3. Find out how likely you are to get COVID
+
+
+# File descriptions
+
+| File | Description |
+| ------- | -------------------------- |
+| main.py | Run the program |
+| API.py | Connects to the API and fetches COVID rate info |
+| predict.py | Predicts what area name user desires |
+| dbconfig.py | Holds SQL login details |
+| dbconnection.py | Connects to SQL database about population and account info |
+| login.py | Allows user to login/create account |
+
+
