@@ -22,8 +22,7 @@ def return_population(input):
 
         for i in cursor:
             num = i[0]
-            print("population: ")
-            print(num)
+            print("population: ", num)
         cursor.close()
 
         return num

@@ -1,5 +1,5 @@
 from predict import get_user_input
-from API import get_rate_by_location
+from API import get_rate_by_location, calculate_risk
 from Population import return_population
 from User import register_or_login
 
@@ -20,26 +20,28 @@ def run():
         if location.isnumeric():
             raise ValueError
 
+        level = input("Choose Nations or UTLA: ")
+        if location.isnumeric():
+            raise ValueError
+
     except ValueError:
         print("Sorry wrong input format. Please try again")
         exit()
 
     print()
 
-    rate = get_rate_by_location(location.title())
+    print(location)
+    rate = get_rate_by_location(level.lower(), location.title())
     pop = return_population(location.title())
     risk = rate/pop*1000
+    calculate_risk(risk)
+    print()
 
-    if risk <= 1:
-        print("Your risk of getting COVID is LOW")
-        print("We recommend you wash your hands frequently")
-    if 1 < risk <= 2:
-        print("Your risk of getting COVID is MEDIUM")
-        print("We recommend you wear a mask")
-    if risk > 2:
-        print("Your risk of getting COVID is HIGH")
-        print("We recommend you take a LFD")
-
+    print("UK")
+    uk_rate = get_rate_by_location("overview", None)
+    uk_pop = return_population("UNITED KINGDOM")
+    uk_risk = uk_rate/uk_pop*1000
+    calculate_risk(uk_risk)
     print()
     print('Keep smiling and carry on!')
 
