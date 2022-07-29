@@ -74,7 +74,7 @@ def return_population(input):
         exit(1)
 
 
-print(return_population('SoMerset'))
+# print(return_population('SoMerset'))
 
 
 
