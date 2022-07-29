@@ -11,13 +11,12 @@ The COVID calculator is an application that allows users to put in location info
 
 ## How to use
 
-1. Run main.py
-
-2. Choose an area type and an area name:
-
+1. Create database by running [SQL file](https://github.com/jessicakan789/team5/blob/main/Database/UpdatedDBThursday.sql)
+2. Download [source code](https://github.com/jessicakan789/team5/tree/main/Source%20code)
+3. Run main.py
+4. Choose an area type and an area name:
 [Area Names](https://github.com/jessicakan789/team5/blob/main/utla_area_names.txt)
-
-3. Find out how likely you are to get COVID
+5. Find out how likely you are to get COVID
 
 
 ## File descriptions
