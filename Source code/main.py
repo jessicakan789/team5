@@ -1,7 +1,7 @@
 from predict import get_user_input
 from API import get_rate_by_location
-from dbconnection import return_population
-from UserConnection import register_or_login
+from Population import return_population
+from User import register_or_login
 
 # These locations would be fetched from the database of upper-tier local authorities
 locations = ['salford', 'barnet', 'barnsley', 'bath', 'bolton', 'blackpool', 'camden', 'dorset', 'sefton', 'sandwell']
