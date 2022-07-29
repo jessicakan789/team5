@@ -7,15 +7,18 @@ Maysa, Louise, Emily, and Jess K
 
 ## Description
 
-The COVID calculator is an application that allows users to put in location information and returns data about covid rates using an API and database. The COVID calculator gives the user simple advice to follow to reduce their risk of catching covid based on percentage risk or some scale of our own. Also, it compares local rates to nationwide rates to give users some context to their local rate.
+The COVID calculator is an application that allows users to put in location information and returns data about covid 
+rates using an API and database. The COVID calculator gives the user simple advice to follow to reduce their risk of 
+catching covid based on percentage risk or some scale of our own. Also, it compares local rates to nationwide rates to 
+give users some context to their local rate.
 
 ## How to use
 
 1. Create database by running [SQL file](https://github.com/jessicakan789/team5/blob/main/Database/UpdatedDBThursday.sql)
 2. Download [source code](https://github.com/jessicakan789/team5/tree/main/Source%20code)
-3. Run main.py
+3. Run "main.py" from source code
 4. Choose an area type and an area name:
-[Area Names](https://github.com/jessicakan789/team5/blob/main/utla_area_names.txt)
+[list of areas](https://github.com/jessicakan789/team5/blob/main/utla_area_names.txt)
 5. Find out how likely you are to get COVID
 
 
