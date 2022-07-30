@@ -1,5 +1,5 @@
-from dbconfig import USER, PASSWORD, HOST
 import mysql.connector
+from dbconfig import HOST, USER, PASSWORD
 
 
 # Create a database connection

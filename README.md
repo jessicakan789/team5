@@ -31,6 +31,7 @@ give users some context to their local rate.
 | predict.py | Predicts what area name user desires |
 | dbconfig.py | Holds SQL login details |
 | dbconnection.py | Connects to SQL database about population and account info |
-| login.py | Allows user to login/create account |
+| User.py | Allows user to login/create account |
+| Population.py | Allows user to access population database info |
 
 

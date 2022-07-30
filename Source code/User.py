@@ -21,8 +21,12 @@ def sign_in():
     while attempts < 2:  # 3 attempts in total
         if username in user_list:
             password = input("Please input your password: ")
-            print("Successful login!")
-            return True
+            if password == get_password(username):
+                print("Successful login!")
+                return True
+            else:
+                print("Sorry that password is not recognised")
+                attempts += 1
         else:
             print("Sorry username not found. Please try again.")
             username = input("Please input your username: ")
@@ -47,6 +51,23 @@ def get_usernames():
 
     cursor.close()
     return user_list
+
+
+def get_password(username):
+    password = ''
+    db_name = 'population'
+    db_connection = _connect_to_db(db_name)
+    cursor = db_connection.cursor()
+    query = """
+        SELECT password FROM user_info where username = '{}'
+        """.format(username)
+
+    cursor.execute(query)
+    for i in cursor:
+        password = i
+    cursor.close()
+    hash_password = hash(password)
+    return hash_password
 
 
 def create_user():
@@ -86,6 +107,7 @@ def create_user():
                 db_connection.commit()
                 print('Welcome!')
                 cursor.close()
+                return True
 
             else:
                 print("Invalid password. Please try again.")

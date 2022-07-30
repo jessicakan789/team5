@@ -17,7 +17,7 @@ def get_similar_word(list_of_words, input_word, threshold):
 
 def get_user_input(given_options):
     while True:
-        user_input = input("Please enter the name of a UTLA: ").lower().strip()
+        user_input = input("Please enter area name: ").lower().strip()
         # match format to however locations are in database... or make everything lower for ease
 
         if user_input in given_options:

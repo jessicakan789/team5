@@ -16,17 +16,20 @@ def run():
     register_or_login()
 
     try:
-        location = get_user_input(locations)  # RETURNS MATCHED WORD
-        if location.isnumeric():
+        level = input("Choose Nations or UTLA: ")
+        if level.isnumeric():
             raise ValueError
 
-        level = input("Choose Nations or UTLA: ")
+        location = get_user_input(locations)  # RETURNS MATCHED WORD
         if location.isnumeric():
             raise ValueError
 
     except ValueError:
         print("Sorry wrong input format. Please try again")
         exit()
+
+    except KeyError:
+        print("Sorry are type or area name not recognised.")
 
     print()
 
