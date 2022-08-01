@@ -28,9 +28,6 @@ def run():
         print("Sorry wrong input format. Please try again")
         exit()
 
-    except KeyError:
-        print("Sorry are type or area name not recognised.")
-
     print()
 
     print(location)
