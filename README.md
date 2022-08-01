@@ -17,9 +17,10 @@ give users some context to their local rate.
 1. Create database by running [SQL file](https://github.com/jessicakan789/team5/blob/main/Database/UpdatedDBThursday.sql)
 2. Download [source code](https://github.com/jessicakan789/team5/tree/main/Source%20code)
 3. Run "main.py" from source code
-4. Choose an area type and an area name:
+4. Create an account or sign-in
+5. Choose an area type and an area name:
 [list of areas](https://github.com/jessicakan789/team5/blob/main/utla_area_names.txt)
-5. Find out how likely you are to get COVID
+6. Find out how likely you are to get COVID
 
 
 ## File descriptions
