@@ -1,5 +1,7 @@
 import unittest
 from API import get_rate_by_location, calculate_risk
+# In PyCharm right click on Source code --> Mark Directory as --> Sources Root
+# In PyCharm right click on Unit tests --> Mark Directory as --> Test Sources Root
 
 
 class Rate(unittest.TestCase):
@@ -15,17 +17,17 @@ class Rate(unittest.TestCase):
 class Risk(unittest.TestCase):
     def test_low(self):
         expected = "low"
-        actual = calculate_risk(0.5)
+        actual = calculate_risk(0.05)
         self.assertEqual(expected, actual)
 
     def test_medium(self):
         expected = "medium"
-        actual = calculate_risk(1.5)
+        actual = calculate_risk(0.15)
         self.assertEqual(expected, actual)
 
     def test_high(self):
         expected = "high"
-        actual = calculate_risk(2.5)
+        actual = calculate_risk(0.25)
         self.assertEqual(expected, actual)
 
 
