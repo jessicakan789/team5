@@ -35,4 +35,8 @@ give users some context to their local rate.
 | User.py | Allows user to login/create account |
 | Population.py | Allows user to access population database info |
 
-
+## Unit tests
+To run unit tests in PyCharm please follow these steps:
+1. In PyCharm right click on Source code --> Mark Directory as --> Sources Root
+2. In PyCharm right click on Unit tests --> Mark Directory as --> Test Sources Root
+3. Right click on Unit tests --> Run
