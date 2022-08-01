@@ -1,5 +1,7 @@
 from dbconnection import _connect_to_db
 import re
+import hashlib
+
 
 
 def register_or_login():
@@ -21,7 +23,10 @@ def sign_in():
     while attempts < 2:  # 3 attempts in total
         if username in user_list:
             password = input("Please input your password: ")
-            if password == get_password(username):
+
+            encoded_password = password.encode()
+            hash_password = hashlib.md5(encoded_password).hexdigest()
+            if hash_password == get_password(username):
                 print("Successful login!")
                 return True
             else:
@@ -55,6 +60,7 @@ def get_usernames():
 
 def get_password(username):
     password = ''
+    final_password = ''
     db_name = 'population'
     db_connection = _connect_to_db(db_name)
     cursor = db_connection.cursor()
@@ -64,10 +70,14 @@ def get_password(username):
 
     cursor.execute(query)
     for i in cursor:
-        password = i
-    cursor.close()
-    hash_password = hash(password)
-    return hash_password
+        password = i[0]       #accesses bytearray in tuple
+        unencoded_password = password.decode()     #decodes bytearray into string
+
+    for x in unencoded_password:
+        if x.isalnum():
+            final_password = final_password + x  #removes binary data from start and end of decoded bytearray
+
+    return final_password
 
 
 def create_user():
@@ -96,7 +106,11 @@ def create_user():
                     valid = True
 
             if valid:
-                stored_password = hash(password)
+
+                encoded_password = password.encode()
+
+                encoded_password = password.encode()
+                stored_password = hashlib.md5(encoded_password).hexdigest()
                 new_user = {'username': username, 'password': stored_password}
                 db_name = 'population'
                 db_connection = _connect_to_db(db_name)
