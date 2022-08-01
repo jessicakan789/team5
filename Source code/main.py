@@ -17,7 +17,7 @@ def run():
 
     try:
         level = input("Choose Nations or UTLA: ")
-        if level.isnumeric():
+        if (level.isnumeric()) or (level.lower() not in ["nations", "utla"]):
             raise ValueError
 
         location = get_user_input(locations)  # RETURNS MATCHED WORD
@@ -40,7 +40,7 @@ def run():
     print("UK")
     uk_rate = get_rate_by_location("overview", None)
     uk_pop = return_population("UNITED KINGDOM")
-    uk_risk = uk_rate/uk_pop*1000
+    uk_risk = uk_rate/uk_pop*100
     calculate_risk(uk_risk)
     print()
     print('Keep smiling and carry on!')
