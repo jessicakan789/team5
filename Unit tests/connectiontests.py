@@ -1,7 +1,7 @@
 """TESTING CORRECT, INCORRECT AND BOUNDARY INPUT FOR THE return_population FUNCTION"""
 
 import unittest
-from dbconnection import return_population
+from Population import return_population
 
 
 class TestConnection(unittest.TestCase):
