@@ -4,8 +4,8 @@ from API import get_rate_by_location, calculate_risk
 
 class Rate(unittest.TestCase):
     def test_returns_value(self):
-        expected = 274  # must keep updating value
-        actual = get_rate_by_location("utla", "blackpool")
+        expected = int
+        actual = type(get_rate_by_location("utla", "blackpool"))
         self.assertEqual(expected, actual)
 
     def test_error(self):
