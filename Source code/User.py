@@ -3,14 +3,16 @@ import re
 import hashlib
 
 
-
 def register_or_login():
     try:
         answer = input("Have you already got an account? y/n ")
         if answer == "y":
-            sign_in()
+            if sign_in():
+                return True
         else:
-            create_user()
+            if create_user():
+                return True
+        return False
     except ValueError:
         print("Sorry please try again")
 
@@ -129,7 +131,7 @@ def create_user():
     if attempts == 2:
         print("Failed to create user account.")
 
-
+    return False
 
 
 

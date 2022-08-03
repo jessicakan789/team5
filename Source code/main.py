@@ -5,7 +5,8 @@ from User import register_or_login
 
 
 # These local encoded_password = password.encode()
-#             hash_password = hashlib.md5(encoded_password).hexdigest()tions would be fetched from the database of upper-tier local authorities
+# hash_password = hashlib.md5(encoded_password).hexdigest()tions would be fetched from the database of
+# upper-tier local authorities
 locations = ['salford', 'barnet', 'barnsley', 'bath', 'bolton', 'blackpool', 'camden', 'dorset', 'sefton', 'sandwell']
 
 
@@ -15,7 +16,8 @@ def run():
     print('############################')
     print()
 
-    register_or_login()
+    if not register_or_login():
+        exit()
 
     try:
         level = input("Choose Nations or UTLA: ")
