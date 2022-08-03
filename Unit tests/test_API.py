@@ -2,17 +2,17 @@ import unittest
 from API import get_rate_by_location, calculate_risk
 
 
-class Rate(unittest.TestCase):
+class RateTest(unittest.TestCase):
     def test_returns_value(self):
         expected = int
         actual = type(get_rate_by_location("utla", "blackpool"))
         self.assertEqual(expected, actual)
 
     def test_error(self):
-        self.assertFalse(get_rate_by_location("utl", "blackpool"))
+        self.assertFalse(get_rate_by_location("utl", "blackpool"))  # spelling error in level
 
 
-class Risk(unittest.TestCase):
+class RiskTest(unittest.TestCase):
     def test_low(self):
         expected = "low"
         actual = calculate_risk(0.05)

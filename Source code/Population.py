@@ -29,7 +29,7 @@ def return_population(input):
 
     except Exception:
         print('Sorry there has been an error')
-        exit(1)
+        return False
 
 
 # print(return_population('SoMerset'))

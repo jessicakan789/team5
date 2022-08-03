@@ -9,30 +9,17 @@ class TestConnection(unittest.TestCase):
         expected = (563851)
         actual = return_population('somerset')
 
-        self.assertEqual(expected, actual)  # add assertion here
-
-
-if __name__ == '__main__':
-    unittest.main()
-
-class TestConnection(unittest.TestCase):
-    def test_population_false(self):
-        expected = (563851)
-        actual = return_population(1234)
-
         self.assertEqual(expected, actual)
 
-if __name__ == '__main__':
-    unittest.main()
+    def test_population_false(self):
+        self.assertFalse(return_population('hello'))  # location does not exist
 
-
-
-class TestConnection(unittest.TestCase):
     def test_population_boundary(self):
         expected = (563851)
-        actual = return_population('SomERseT')
+        actual = return_population('SomERseT')  # some letters capitalised
 
         self.assertEqual(expected, actual)
+
 
 if __name__ == '__main__':
     unittest.main()

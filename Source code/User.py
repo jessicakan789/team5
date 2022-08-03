@@ -9,9 +9,11 @@ def register_or_login():
         if answer == "y":
             if sign_in():
                 return True
-        else:
+        elif answer == "n":
             if create_user():
                 return True
+        else:
+            raise ValueError
         return False
     except ValueError:
         print("Sorry please try again")
@@ -61,7 +63,6 @@ def get_usernames():
 
 
 def get_password(username):
-    password = ''
     final_password = ''
     db_name = 'population'
     db_connection = _connect_to_db(db_name)
