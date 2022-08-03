@@ -3,8 +3,7 @@ from API import get_rate_by_location, calculate_risk
 from Population import return_population
 from User import register_or_login, sign_in
 from dbconnection import _connect_to_db
-from db_insert import insert_new_data
-
+from update_user import insert_new_data
 
 # These local encoded_password = password.encode()
 #             hash_password = hashlib.md5(encoded_password).hexdigest()tions would be fetched from the database of upper-tier local authorities
@@ -54,11 +53,6 @@ def run():
     calculate_risk(uk_risk)
     print()
     print('Keep smiling and carry on!')
-
-
-
-
-
 
 
 
