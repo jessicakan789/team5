@@ -1,10 +1,4 @@
-import Levenshtein
-
-
-# This package can measure the similarity between strings
-
-# # These locations would be fetched from the database of upper-tier local authorities
-# locations = ['salford','barnet','barnsley', 'bath', 'bolton', 'blackpool','camden','dorset', 'sefton', 'sandwell']
+import Levenshtein  # This package can measure the similarity between strings
 
 
 # Make sure strings are all lowercase, remove white space etc., before using this function
@@ -47,7 +41,7 @@ def get_user_input(given_options):
 
     while attempts < 3:
         user_input = input("Please enter the name of a UTLA: ").lower().strip()
-        # match format to however locations are in database... or make everything lower for ease
+        # make everything lower case for ease
 
         if user_input in given_options:
             print("Location {} found!".format(user_input))

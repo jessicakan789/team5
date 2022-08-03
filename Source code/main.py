@@ -1,11 +1,7 @@
 from predict import get_user_input
 from API import get_rate_by_location, calculate_risk
-from Population import return_population
+from Population import return_population, return_locations
 from User import register_or_login
-
-
-#  TO DO: FETCH LOCATIONS FROM DATABASE AND STORE IN LIST AS FOLLOWS
-locations = ['salford', 'barnet', 'barnsley', 'bath', 'bolton', 'blackpool', 'camden', 'dorset', 'sefton', 'sandwell']
 
 
 def run():
@@ -22,6 +18,7 @@ def run():
         if (level.isnumeric()) or (level.lower() not in ["nations", "utla"]):
             raise ValueError
 
+        locations = return_locations()
         location = get_user_input(locations)  # RETURNS MATCHED WORD
         if location is None or location.isnumeric():
             raise ValueError
