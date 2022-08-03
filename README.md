@@ -14,12 +14,12 @@ give users some context to their local rate.
 
 ## How to use
 
-1. Create database by running [SQL file](https://github.com/jessicakan789/team5/Database/UpdatedDB3rdAug.sql)
-2. Download [source code](https://github.com/jessicakan789/team5/Source%20code)
+1. Create database by running [SQL file](https://github.com/jessicakan789/team5/tree/main/Database/UpdatedDB3rdAug.sql)
+2. Download [source code](https://github.com/jessicakan789/team5/tree/main/Source%20code)
 3. Run "main.py" from source code
 4. Create an account or sign-in
 5. Choose an area type and an area name:
-[list of areas](https://github.com/jessicakan789/team5/Research/area_names.txt)
+[list of areas](https://github.com/jessicakan789/team5/tree/main/Research/area_names.txt)
 6. Find out how likely you are to get COVID
 
 
