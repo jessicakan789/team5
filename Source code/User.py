@@ -73,12 +73,12 @@ def get_password(username):
 
     cursor.execute(query)
     for i in cursor:
-        password = i[0]       #accesses bytearray in tuple
-        unencoded_password = password.decode()     #decodes bytearray into string
+        password = i[0]       # accesses bytearray in tuple
+        unencoded_password = password.decode()     # decodes bytearray into string
 
     for x in unencoded_password:
         if x.isalnum():
-            final_password = final_password + x  #removes binary data from start and end of decoded bytearray
+            final_password = final_password + x  # removes binary data from start and end of decoded bytearray
 
     return final_password
 

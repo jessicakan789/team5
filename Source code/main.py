@@ -4,9 +4,7 @@ from Population import return_population
 from User import register_or_login
 
 
-# These local encoded_password = password.encode()
-# hash_password = hashlib.md5(encoded_password).hexdigest()tions would be fetched from the database of
-# upper-tier local authorities
+#  TO DO: FETCH LOCATIONS FROM DATABASE AND STORE IN LIST AS FOLLOWS
 locations = ['salford', 'barnet', 'barnsley', 'bath', 'bolton', 'blackpool', 'camden', 'dorset', 'sefton', 'sandwell']
 
 
