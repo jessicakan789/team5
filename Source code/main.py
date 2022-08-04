@@ -5,6 +5,7 @@ from User import register_or_login, sign_in
 from dbconnection import _connect_to_db
 from update_user import insert_new_data
 
+
 # These local encoded_password = password.encode()
 #             hash_password = hashlib.md5(encoded_password).hexdigest()tions would be fetched from the database of upper-tier local authorities
 locations = ['salford', 'barnet', 'barnsley', 'bath', 'bolton', 'blackpool', 'camden', 'dorset', 'sefton', 'sandwell']
@@ -43,17 +44,15 @@ def run():
     risk = rate/pop*1000
     calculate_risk(risk)
     print()
-    insert_new_data(location, risk)
-
 
     print("UK")
     uk_rate = get_rate_by_location("overview", None)
     uk_pop = return_population("UNITED KINGDOM")
     uk_risk = uk_rate/uk_pop*1000
     calculate_risk(uk_risk)
+    insert_new_data(location, risk)
     print()
     print('Keep smiling and carry on!')
-
 
 
 if __name__ == '__main__':

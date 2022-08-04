@@ -3,12 +3,11 @@ from dbconnection import _connect_to_db
 import mysql.connector
 from dbconfig import HOST, USER, PASSWORD
 
-
 def insert_new_data(location, risk):
     username = sign_in()[1]
     db_name = 'population'
     db_location = location
-    db_rate = round(risk, 2)
+    db_rate = float(risk)
 
     info = {'username': username, 'last_area' : db_location, 'last_rate' : db_rate}
 
@@ -27,8 +26,7 @@ def insert_new_data(location, risk):
 
     cursor.execute(query)
     db_connection.commit()
-    #cursor.rowcount()
     cursor.close()
     db_connection.close()
 
-insert_new_data('barnet', 1.5)
+#insert_new_data('somerset', 5)
