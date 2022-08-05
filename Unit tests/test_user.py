@@ -1,5 +1,5 @@
 import unittest
-from User import get_password
+from login import get_password
 
 
 class PasswordTest(unittest.TestCase):
