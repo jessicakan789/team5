@@ -11,7 +11,8 @@ def run():
     print('Hello, welcome to the COVID calculator')
     print('Please use this information as one part of your own personal risk assessment')
     print('For personalised risk information you can visit OurRisk.CoV | COVID-19 Phenomics (covid19-phenomics.org) ')
-    print('If you consider yourself to be high risk, please visit https://www.nhs.uk/conditions/coronavirus-covid-19/people-at-higher-risk/advice-for-people-at-high-risk/')
+    print('If you consider yourself to be high risk, please visit '
+          'https://www.nhs.uk/conditions/coronavirus-covid-19/people-at-higher-risk/advice-for-people-at-high-risk/')
     print('for further information.')
     print('############################')
     print()
