@@ -15,17 +15,17 @@ class RateTest(unittest.TestCase):
 class RiskTest(unittest.TestCase):
     def test_low(self):
         expected = "low"
-        actual = calculate_risk(0.05)
+        actual = calculate_risk(5)
         self.assertEqual(expected, actual)
 
     def test_medium(self):
         expected = "medium"
-        actual = calculate_risk(0.15)
+        actual = calculate_risk(15)
         self.assertEqual(expected, actual)
 
     def test_high(self):
         expected = "high"
-        actual = calculate_risk(0.25)
+        actual = calculate_risk(25)
         self.assertEqual(expected, actual)
 
 
