@@ -1,7 +1,5 @@
-from User import sign_in
 from dbconnection import _connect_to_db
-import mysql.connector
-from dbconfig import HOST, USER, PASSWORD
+
 
 def insert_new_data(username, location, risk):
     db_name = 'population'
@@ -22,6 +20,7 @@ def insert_new_data(username, location, risk):
     print('Your latest area and rate information is saved to your account. Thanks for using the Covid Calculator. '
           'See you soon!')
 
+
 def get_user_data(username):
     db_name = 'population'
     db_connection = _connect_to_db(db_name)
@@ -35,6 +34,7 @@ def get_user_data(username):
         last_rate = i[1]
     cursor.close()
     db_connection.close()
-    print('Last time you searched for was {} and the local rate then was {} people / 100000'.format(last_area, last_rate))
+    print('Last time you searched for was {} and the local rate then was {} people / 100000'.format(
+        last_area, last_rate))
 
 

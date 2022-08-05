@@ -1,8 +1,7 @@
 from predict import get_user_input
 from API import get_rate_by_location, calculate_risk
 from Population import return_population
-from User import register_or_login, sign_in
-from dbconnection import _connect_to_db
+from User import register_or_login
 from user_update import insert_new_data, get_user_data
 from area_advice import provide_advice
 

@@ -1,7 +1,5 @@
-from User import sign_in
 from dbconnection import _connect_to_db
-import mysql.connector
-from dbconfig import HOST, USER, PASSWORD
+
 
 def provide_advice(area):
     db_name = 'population'
