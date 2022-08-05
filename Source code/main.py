@@ -66,7 +66,7 @@ def run():
 
     else:
         if store_data == 'y':
-            username = input('To save your information, please type in your username again ')
+            username = input('To save your information, please type in your username again: ')
             get_user_data(username)
             insert_new_data(username, location, risk)
         elif store_data == 'n':
