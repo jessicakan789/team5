@@ -55,9 +55,14 @@ def run():
     uk_risk = uk_rate/uk_pop*10000
     calculate_risk(uk_risk)
 
+    advice = input('Would you like your national advice? y/n : ')
+    if advice == 'y':
+        provide_advice(location)            #need to use location to get nation from DB
+
+
 
     try:
-        store_data = input('Do you want to store your latest information? y/n :')
+        store_data = input('Do you want to store your latest information? y/n : ')
         if store_data.isnumeric():
             raise ValueError
 
@@ -74,12 +79,6 @@ def run():
             print('No worries! Hope to see you soon!')
         else:
             print("Sorry that is not recognised, please try again some other time")
-
-    finally:
-        provide_advice(location)
-
-
-
 
 
 
