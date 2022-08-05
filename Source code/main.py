@@ -4,6 +4,7 @@ from Population import return_population
 from User import register_or_login, sign_in
 from dbconnection import _connect_to_db
 from user_update import insert_new_data, get_user_data
+from area_advice import provide_advice
 
 
 # These local encoded_password = password.encode()
@@ -54,6 +55,7 @@ def run():
     uk_risk = uk_rate/uk_pop*10000
     calculate_risk(uk_risk)
 
+
     try:
         store_data = input('Do you want to store your latest information? y/n :')
         if store_data.isnumeric():
@@ -62,7 +64,6 @@ def run():
     except ValueError:
         print("Sorry wrong input format. Please try again")
         exit()
-
 
     else:
         if store_data == 'y':
@@ -73,6 +74,9 @@ def run():
             print('No worries! Hope to see you soon!')
         else:
             print("Sorry that is not recognised, please try again some other time")
+
+    finally:
+        provide_advice(location)
 
 
 
