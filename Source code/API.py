@@ -35,7 +35,7 @@ def get_rate_by_location(level, location):
         for i in range(0, 7):
             latest += int(result.json()['data'][i]['dailyCases'])
 
-        print('Number of cases in the last 7 days:', latest)
+        print('Number of positive tests in this area in the last 7 days:', latest)
 
         return latest
 
@@ -45,15 +45,20 @@ def get_rate_by_location(level, location):
 
 
 def calculate_risk(risk):
-    if risk <= 0.1:
-        print("The risk of getting COVID is {} in 1000 people".format(round(risk * 10)))
-        print("We recommend you wash your hands frequently")
-        return "low"
-    elif 0.1 < risk <= 0.2:
-        print("The risk of getting COVID is {} in 1000 people".format(round(risk * 10)))
-        print("We recommend you wear a mask")
-        return "medium"
+    if risk <= 0.0005:
+        print("In this area in the last 7 days, {} in 10000 people have tested positive for Covid-19."
+              "This is the same as {} people in a packed Wembley Stadium or {} people at the Glastonbury"
+              " Festival".format(round(risk), round(risk * 9), round(risk * 20)))
+        print("Overall risk in your area is LOW")
+    elif 0.0005 < risk <= 0.001:
+        print("In this area in the last 7 days, {} in 10000 people have tested positive for Covid-19."
+              "This is the same as {} people in a packed Wembley Stadium or {} people at the Glastonbury"
+              " Festival".format(round(risk), round(risk * 9), round(risk * 20)))
+        print("Overall risk in your area is MEDIUM")
     else:
-        print("The risk of getting COVID is {} in 1000 people".format(round(risk * 10)))
-        print("We recommend you take a LFD")
-        return "high"
+        print("In this area in the last 7 days, {} in 10000 people have tested positive for Covid-19."
+              "This is the same as {} people in a packed Wembley Stadium or {} people at the Glastonbury"
+              " Festival".format(round(risk), round(risk * 9), round(risk * 20)))
+        print("Overall risk in your area is HIGH")
+
+#print(calculate_risk(0.0006))
