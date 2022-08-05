@@ -54,9 +54,25 @@ def run():
     uk_risk = uk_rate/uk_pop*10000
     calculate_risk(uk_risk)
 
-    username = input('To save your information, please type in your username again ')
-    get_user_data(username)
-    insert_new_data(username, location, risk)
+    try:
+        store_data = input('Do you want to store your latest information? y/n :')
+        if store_data.isnumeric():
+            raise ValueError
+
+    except ValueError:
+        print("Sorry wrong input format. Please try again")
+        exit()
+
+
+    else:
+        if store_data == 'y':
+            username = input('To save your information, please type in your username again ')
+            get_user_data(username)
+            insert_new_data(username, location, risk)
+        elif store_data == 'n':
+            print('No worries! Hope to see you soon!')
+        else:
+            print("Sorry that is not recognised, please try again some other time")
 
 
 
