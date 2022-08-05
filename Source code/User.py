@@ -32,7 +32,7 @@ def sign_in():
             hash_password = hashlib.md5(encoded_password).hexdigest()
             if hash_password == get_password(username):
                 print("Successful login!")
-                return True
+                return True, username
             else:
                 print("Sorry that password is not recognised")
                 attempts += 1

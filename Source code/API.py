@@ -35,7 +35,7 @@ def get_rate_by_location(level, location):
         for i in range(0, 7):
             latest += int(result.json()['data'][i]['dailyCases'])
 
-        print('Number of cases in the last 7 days:', latest)
+        print('Number of positive tests in this area in the last 7 days:', latest)
 
         return latest
 
@@ -57,3 +57,5 @@ def calculate_risk(risk):
         print("The risk of getting COVID is {} in 100,000 people".format(round(risk * 100000)))
         print("Your risk is HIGH")
         return "high"
+
+# print(calculate_risk(6))
