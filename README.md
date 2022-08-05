@@ -7,9 +7,9 @@ Maysa, Louise, Emily, and Jess K
 
 ## Description
 
-The COVID calculator is an application that allows users to put in location information and returns data about covid 
+The COVID calculator is an application that allows users to put in location information and returns data about COVID 
 rates using an API and database. The COVID calculator gives the user simple advice to follow to reduce their risk of 
-catching covid based on percentage risk or some scale of our own. Also, it compares local rates to nationwide rates to 
+catching COVID based on risk. Also, it compares local rates to nationwide rates to 
 give users some context to their local rate.
 
 ## How to use
@@ -27,13 +27,15 @@ give users some context to their local rate.
 
 | File | Description |
 | ------- | -------------------------- |
-| main.py | Run the program |
+| main.py | Runs the program |
 | API.py | Connects to the API and fetches COVID rate info |
 | predict.py | Predicts what area name user desires |
 | dbconfig.py | Holds SQL login details |
 | dbconnection.py | Connects to SQL database about population and account info |
-| User.py | Allows user to login/create account |
 | Population.py | Allows user to access population database info |
+| login.py | Allows user to login/create account |
+| area_advice.py | Gives user government advice for their nation |
+| save_search.py | Saves location and risk from previous search |
 
 ## Unit tests
 To run unit tests in PyCharm please follow these steps:
