@@ -15,7 +15,7 @@ give users some context to their local rate.
 ## How to use
 
 1. Create database by running [SQL file](https://github.com/jessicakan789/team5/tree/main/Database)
-2. Download [source code](https://github.com/jessicakan789/team5/tree/main/Source%20code)
+2. Download [source code](https://github.com/jessicakan789/team5/tree/main/Source_code)
 3. Run "main.py" from source code
 4. Create an account or sign-in
 5. Choose an area type and an area name:
