@@ -8,8 +8,11 @@ class RateTest(unittest.TestCase):
         actual = type(get_rate_by_location("utla", "blackpool"))
         self.assertEqual(expected, actual)
 
-    def test_error(self):
-        self.assertFalse(get_rate_by_location("utl", "blackpool"))  # spelling error in level
+    def test_wrong_level(self):
+        self.assertFalse(get_rate_by_location("blah", "blackpool"))  # level does not exist so KeyError
+
+    def test_wrong_location(self):
+        self.assertFalse(get_rate_by_location("utla", "blah"))  # location does not exist so KeyError
 
 
 class RiskTest(unittest.TestCase):

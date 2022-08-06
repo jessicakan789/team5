@@ -8,13 +8,18 @@ class InsertData(unittest.TestCase):
         self.assertTrue(result)
 
     def test_false(self):
-        result = insert_new_data("LouisePoole1", "england", "5")
+        result = insert_new_data("blah", "blah", "blah")  # risk is not a number so ValueError
+        self.assertFalse(result)
+
+
+class GetData(unittest.TestCase):
+    def test_true(self):
+        result = get_user_data("LouisePoole22")
         self.assertTrue(result)
 
-
-# class GetData(unittest.TestCase):
-#     def test_something(self):
-#         self.assertEqual(True, False)
+    def test_false(self):
+        result = get_user_data("blah")  # User does not exist so UnboundLocalError for last_area
+        self.assertFalse(result)
 
 
 if __name__ == '__main__':

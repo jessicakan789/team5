@@ -12,7 +12,7 @@ class ProvideAdvice(unittest.TestCase):
             provide_advice("Aberdeen City")
 
     def test_false(self):
-        result = provide_advice("blah")
+        result = provide_advice("blah")  # location does not exist so returns False
         self.assertFalse(result)
 
 

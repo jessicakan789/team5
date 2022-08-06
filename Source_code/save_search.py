@@ -23,7 +23,7 @@ def insert_new_data(username, location, risk):
                 'See you soon!')
         return True
 
-    except _mysql_connector.MySQLInterfaceError or mysql.connector.errors.ProgrammingError:
+    except (_mysql_connector.MySQLInterfaceError, mysql.connector.errors.ProgrammingError, TypeError, ValueError):
         return False
 
 
@@ -33,7 +33,7 @@ def get_user_data(username):
         db_connection = _connect_to_db(db_name)
         cursor = db_connection.cursor()
         query = """
-            SELECT last_area, last_rate FROM user_info where username = '{}'
+            SELECT last_area, last_rate FROM user_area_data where username = '{}'
             """.format(username)
         cursor.execute(query)
         for i in cursor:
@@ -45,7 +45,7 @@ def get_user_data(username):
             last_area, last_rate))
         return True
 
-    except _mysql_connector.MySQLInterfaceError or mysql.connector.errors.ProgrammingError:
+    except (_mysql_connector.MySQLInterfaceError, mysql.connector.errors.ProgrammingError, UnboundLocalError):
         return False
 
 
