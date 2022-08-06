@@ -119,11 +119,14 @@ def create_user():
                 db_connection = _connect_to_db(db_name)
                 cursor = db_connection.cursor()
                 query = """Insert into user_info ({}) Values ('{}', '{}')""".format(
-                    ', '.join(new_user.keys()), new_user['username'], new_user['password'])
+                    ', '.join(new_user.keys()), new_user['username'], new_user['password'],)
+
                 cursor.execute(query)
+
                 db_connection.commit()
+                populate_table(username)
                 print('Welcome!')
-                cursor.close()
+
                 return True
 
             else:
@@ -133,6 +136,18 @@ def create_user():
         print("Failed to create user account.")
 
     return False
+
+def populate_table(username):
+
+    user = {'username': username}
+    db_name = 'population'
+    db_connection = _connect_to_db(db_name)
+    cursor = db_connection.cursor()
+    query = """Insert into user_area_data ({}) Values ('{}')""".format(
+        'username', user['username'], )
+    cursor.execute(query)
+    db_connection.commit()
+    cursor.close()
 
 
 
