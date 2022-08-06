@@ -16,25 +16,29 @@ def provide_advice(area):
             with open('EnglandAdvice.txt', 'r') as England:
                 for x in England:
                     print(x)
+            return "England"
 
         elif region[0] == 'Scotland':
             with open('ScotlandAdvice.txt', 'r') as Scotland:
                 for x in Scotland:
                     print(x)
+            return "Scotland"
 
         elif region[0] == 'Wales':
             with open('WalesAdvice.txt', 'r') as Wales:
                 for x in Wales:
                     print(x)
+            return "Wales"
 
         elif region[0] == 'Northern Ireland':
             with open('NIAdvice.txt', 'r') as NI:
                 for x in NI:
                     print(x)
+            return "Northern Ireland"
 
+    return False
 
-
-#provide_advice('Northern Ireland')
+# provide_advice('Northern Ireland')
 
 
 

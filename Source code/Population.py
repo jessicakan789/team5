@@ -49,11 +49,11 @@ def return_locations():
 
         locations = []
         for i in cursor:
-            locations.append(i[0])
+            locations.append(i[0].lower())
         cursor.close()
 
         return locations
 
-    except Exception:
+    except TypeError:
         print('Sorry there has been an error')
         return False

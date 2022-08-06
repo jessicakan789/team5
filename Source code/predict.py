@@ -40,7 +40,7 @@ def get_user_input(given_options):
     attempts = 0
 
     while attempts < 3:
-        user_input = input("Please enter the name of a UTLA: ").lower().strip()
+        user_input = input("Please enter the name of a Nation or UTLA: ").lower().strip()
         # make everything lower case for ease
 
         if user_input in given_options:
