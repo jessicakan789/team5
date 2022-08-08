@@ -39,6 +39,6 @@ give users some context to their local rate.
 
 ## Unit tests
 To run unit tests in PyCharm please follow these steps:
-1. In PyCharm right click on Source code --> Mark Directory as --> Sources Root
-2. In PyCharm right click on Unit tests --> Mark Directory as --> Test Sources Root
-3. Right click on Unit tests --> Run
+1. In PyCharm right click on Source_code --> Mark Directory as --> Sources Root
+2. In PyCharm right click on Unit_tests --> Mark Directory as --> Test Sources Root
+3. Right click on Unit_tests --> Run
