@@ -1,7 +1,7 @@
 from predict import get_user_input
 from API import get_rate_by_location, calculate_risk
 from Population import return_population, return_locations
-from login import register_or_login
+from login_oop import *
 from save_search import insert_new_data, get_user_data
 from area_advice import provide_advice
 
@@ -18,7 +18,7 @@ def run():
     print()
 
     if not register_or_login():
-        exit()
+        exit(-1)
 
     try:
         level = input("Choose Nations or UTLA (Your Local Authority): ")
