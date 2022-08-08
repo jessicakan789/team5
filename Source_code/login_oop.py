@@ -2,13 +2,16 @@ import re
 from db_utils import *
 from save_search import populate_table
 
+
 class UsernameExistsError(Exception):
     """To be raised when username already exists"""
     pass
 
+
 class CommonPasswordError(Exception):
     """To be raised if password is too easy to guess, based on list of common passwords"""
     pass
+
 
 class RegexError(Exception):
     """To be raised if password doesn't satisfy REGEX conditions"""
@@ -67,7 +70,6 @@ class NewUser(User):
             return self._is_Successful
 
 
-
 class ExistingUser(User):
     def login(self):
         if self.username in self._existing_users:
@@ -80,11 +82,11 @@ class ExistingUser(User):
             print("LOGIN FAILED: Username unrecognised")
         return False
 
-    def add_location(self,location):
+    def add_location(self, location):
         self.location = location
 
     def add_hint(self):
-        # hint and memorable word? incase forgot password?
+        # hint and memorable word? in case forgot password?
         pass
 
     def forgot_password(self):
@@ -94,7 +96,7 @@ class ExistingUser(User):
 
 def register_or_login():
     while True:
-        is_existing = input("Do you already have an account? y/n").strip().lower()
+        is_existing = input("Do you already have an account? y/n ").strip().lower()
         if is_existing == 'y' :
             issuccess = existing_user_login()
             return issuccess
@@ -108,9 +110,9 @@ def register_or_login():
 
 def make_new_user():
     isSuccess = False
-    while isSuccess==False:
-        username = input("Username:")
-        password = input("Password:")
+    while isSuccess == False:
+        username = input("Username: ")
+        password = input("Password: ")
 
         new_user = NewUser(username,password)
         isSuccess = new_user.make_new_user()
@@ -120,14 +122,14 @@ def make_new_user():
 def existing_user_login():
     isSuccess = False
     attempts = 0
-    while isSuccess==False and attempts <3:
+    while isSuccess == False and attempts <3:
         username = input("Username: ").strip()
         password = input("Password: ").strip()
 
         login_user = ExistingUser(username,password)
         isSuccess = login_user.login()
 
-        attempts +=1
+        attempts += 1
 
         if not isSuccess:
             print("You have {} attempts left.".format(3-attempts))
