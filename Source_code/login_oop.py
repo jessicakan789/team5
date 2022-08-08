@@ -1,5 +1,6 @@
 import re
 from db_utils import *
+from save_search import populate_table
 
 class UsernameExistsError(Exception):
     """To be raised when username already exists"""
@@ -50,6 +51,7 @@ class NewUser(User):
         try:
             if self.is_unique() and self.common_passwords_checker() and self.password_regex():
                 add_new_user(self.username,self.password)
+                populate_table(self.username)
                 self._is_Successful = True
         except UsernameExistsError:
             print("Sorry, this username already exists. Please try again.")

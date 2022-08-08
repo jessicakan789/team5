@@ -2,6 +2,19 @@ from dbconnection import _connect_to_db
 import mysql.connector, _mysql_connector
 
 
+def populate_table(username):
+
+    user = {'username': username}
+    db_name = 'population'
+    db_connection = _connect_to_db(db_name)
+    cursor = db_connection.cursor()
+    query = """Insert into user_area_data ({}) Values ('{}')""".format(
+        'username', user['username'], )
+    cursor.execute(query)
+    db_connection.commit()
+    cursor.close()
+
+
 def insert_new_data(username, location, risk):
     try:
         db_name = 'population'
@@ -11,20 +24,28 @@ def insert_new_data(username, location, risk):
         info = {'username': username, 'last_area' : db_location, 'last_rate' : db_rate}
         db_connection = _connect_to_db(db_name)
         cursor = db_connection.cursor()
-        query = ("""UPDATE user_area_data SET
+        query = """
+        
+        UPDATE user_area_data SET
            last_area = '{}', last_rate = '{}'
-            WHERE username = '{}'""".format(
-            info['last_area'], info['last_rate'], info['username']))
+            WHERE username = '{}'
+            """.format(
+
+            info['last_area'], info['last_rate'], info['username'])
         cursor.execute(query)
         db_connection.commit()
         cursor.close()
+    except Exception as exc:
+        print(exc)
+        return False
+    finally:
         db_connection.close()
         print('Your latest area and rate information is saved to your account. Thanks for using the Covid Calculator. '
-                'See you soon!')
+                    'See you soon!')
         return True
-
-    except (_mysql_connector.MySQLInterfaceError, mysql.connector.errors.ProgrammingError, TypeError, ValueError):
-        return False
+    #
+    # except (_mysql_connector.MySQLInterfaceError, mysql.connector.errors.ProgrammingError, TypeError, ValueError):
+    #     return False
 
 
 def get_user_data(username):
