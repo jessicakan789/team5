@@ -10,7 +10,6 @@ def provide_advice(area):
             """.format(area)
     cursor.execute(query)
     for region in cursor:
-        print(region)
 
         if region[0] == 'England':
             with open('EnglandAdvice.txt', 'r') as England:
@@ -30,6 +29,11 @@ def provide_advice(area):
         elif region[0] == 'Northern Ireland':
             with open('NIAdvice.txt', 'r') as NI:
                 for x in NI:
+                    print(x)
+
+        elif region[0] == 'United Kingdom':
+            with open('UK_advice.txt', 'r') as UK:
+                for x in UK:
                     print(x)
 
 
