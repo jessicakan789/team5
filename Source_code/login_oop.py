@@ -17,7 +17,7 @@ class RegexError(Exception):
     """To be raised if password doesn't satisfy REGEX conditions"""
 
 
-class User():
+class User:
 
     _existing_users = get_usernames()
 
@@ -46,14 +46,14 @@ class NewUser(User):
         return True
 
     def password_regex(self):
-        if not re.fullmatch(self._regex,self.password):
+        if not re.fullmatch(self._regex, self.password):
             raise RegexError
         return True
 
     def make_new_user(self):
         try:
             if self.is_unique() and self.common_passwords_checker() and self.password_regex():
-                add_new_user(self.username,self.password)
+                add_new_user(self.username, self.password)
                 populate_table(self.username)
                 self._is_Successful = True
         except UsernameExistsError:
@@ -97,10 +97,10 @@ class ExistingUser(User):
 def register_or_login():
     while True:
         is_existing = input("Do you already have an account? y/n ").strip().lower()
-        if is_existing == 'y' :
+        if is_existing == 'y':
             issuccess = existing_user_login()
             return issuccess
-        elif is_existing == 'n' :
+        elif is_existing == 'n':
             issuccess = make_new_user()
             return issuccess
         else:
@@ -110,7 +110,7 @@ def register_or_login():
 
 def make_new_user():
     isSuccess = False
-    while isSuccess == False:
+    while not isSuccess:
         username = input("Username: ")
         password = input("Password: ")
 
@@ -122,7 +122,7 @@ def make_new_user():
 def existing_user_login():
     isSuccess = False
     attempts = 0
-    while isSuccess == False and attempts <3:
+    while not isSuccess and attempts < 3:
         username = input("Username: ").strip()
         password = input("Password: ").strip()
 
