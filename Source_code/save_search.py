@@ -1,5 +1,4 @@
 from dbconnection import _connect_to_db
-import mysql.connector, _mysql_connector
 
 
 def populate_table(username):
@@ -35,9 +34,11 @@ def insert_new_data(username, location, risk):
         cursor.execute(query)
         db_connection.commit()
         cursor.close()
+
     except Exception as exc:
         print(exc)
         return False
+
     finally:
         db_connection.close()
         print('Your latest area and rate information is saved to your account. Thanks for using the Covid Calculator. '
@@ -66,7 +67,10 @@ def get_user_data(username):
             last_area, last_rate))
         return True
 
-    except (_mysql_connector.MySQLInterfaceError, mysql.connector.errors.ProgrammingError, UnboundLocalError):
-        return False
+    # except (_mysql_connector.MySQLInterfaceError, mysql.connector.errors.ProgrammingError, UnboundLocalError):
+    #     return False
 
+    except Exception as exc:
+        print(exc)
+        return False
 
