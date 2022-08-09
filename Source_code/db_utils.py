@@ -5,6 +5,7 @@ from hashing import hash_password
 class DbConnectionError(Exception):
     pass
 
+
 def get_usernames():
     try:
         db_name = 'population'
@@ -22,6 +23,7 @@ def get_usernames():
 
     except Exception:
         raise DbConnectionError("Failed to read data from database.")
+
     finally:
         if db_connection:
             db_connection.close()
@@ -53,12 +55,14 @@ def get_password(username):
 
     except Exception:
         raise DbConnectionError("Failed to read data from database.")
+
     finally:
         if db_connection:
             db_connection.close()
             return final_password
 
-def add_new_user(username,password):
+
+def add_new_user(username, password):
     try:
         db_name = 'population'
         db_connection = _connect_to_db(db_name)
@@ -76,9 +80,11 @@ def add_new_user(username,password):
 
     except Exception:
         raise DbConnectionError("Failed to read data from database.")
+
     finally:
         if db_connection:
             db_connection.close()
+
 
 def area_info_usernames():
     try:
@@ -97,6 +103,7 @@ def area_info_usernames():
 
     except Exception:
         raise DbConnectionError("Failed to read data from database.")
+
     finally:
         if db_connection:
             db_connection.close()
