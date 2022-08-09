@@ -6,7 +6,7 @@ def insert_new_data(username, location, risk):
     try:
         db_name = 'population'
         db_location = location
-        db_rate = float(risk)
+        db_rate = float(risk * 100000)
 
         info = {'username': username, 'last_area' : db_location, 'last_rate' : db_rate}
         db_connection = _connect_to_db(db_name)
