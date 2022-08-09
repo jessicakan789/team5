@@ -58,6 +58,7 @@ def get_password(username):
             db_connection.close()
             return final_password
 
+
 def add_new_user(username,password):
     try:
         db_name = 'population'

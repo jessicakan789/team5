@@ -69,6 +69,7 @@ class NewUser(User):
 
 
 class ExistingUser(User):
+
     def login(self):
         if self.username in self._existing_users:
             if hash_password(self.password) == get_password(self.username):
@@ -96,11 +97,11 @@ def register_or_login():
     while True:
         is_existing = input("Do you already have an account? y/n").strip().lower()
         if is_existing == 'y' :
-            issuccess = existing_user_login()
-            return issuccess
+            status = existing_user_login()
+            return status
         elif is_existing == 'n' :
-            issuccess = make_new_user()
-            return issuccess
+            status = make_new_user()
+            return status
         else:
             print("Please enter a valid input")
             pass
@@ -114,7 +115,7 @@ def make_new_user():
 
         new_user = NewUser(username,password)
         isSuccess = new_user.make_new_user()
-    return isSuccess
+    return isSuccess, username
 
 
 def existing_user_login():
@@ -134,4 +135,4 @@ def existing_user_login():
 
     if attempts >= 3:
         print("Sorry, you have exceeded the maximum number of attempts.")
-    return isSuccess
+    return isSuccess, username

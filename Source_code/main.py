@@ -17,7 +17,9 @@ def run():
     print('############################')
     print()
 
-    if not register_or_login():
+    login_status, user = register_or_login()
+
+    if not login_status:
         exit(-1)
 
     try:
@@ -68,8 +70,11 @@ def run():
     else:
         if store_data == 'y':
             username = input('To save your information, please type in your username again: ')
-            get_user_data(username)
-            insert_new_data(username, location, risk)
+            if username.strip() == user:
+                get_user_data(username)
+                insert_new_data(username, location, risk)
+            else:
+                print("This input does not match! Data could not be saved.")
         elif store_data == 'n':
             print('No worries! Hope to see you soon!')
         else:
