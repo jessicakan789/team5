@@ -72,7 +72,7 @@ def add_new_user(username, password):
         query = """
             INSERT INTO user_info (username, password)
             VALUES ('{}','{}')
-        """.format(username,hash_password(password))
+        """.format(username, hash_password(password))
 
         cursor.execute(query)
         db_connection.commit()
@@ -84,6 +84,7 @@ def add_new_user(username, password):
     finally:
         if db_connection:
             db_connection.close()
+        return True
 
 
 def area_info_usernames():

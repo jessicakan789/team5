@@ -1,5 +1,5 @@
 import unittest
-from db_utils import get_password, add_new_user
+from db_utils import get_password, add_new_user, DbConnectionError
 
 
 class PasswordTest(unittest.TestCase):
@@ -18,6 +18,15 @@ class PasswordTest(unittest.TestCase):
         expected = ''
         actual = get_password("blah")  # user does not exist so returns empty string
         self.assertEqual(expected, actual)
+
+
+class NewUserTest(unittest.TestCase):
+    def test_valid(self):
+        self.assertTrue(add_new_user("blah", "blah"))
+
+    def test_error(self):
+        with self.assertRaises(DbConnectionError):
+            add_new_user("blah", 1234)  # AttributeError: 'int' object has no attribute 'encode'
 
 
 if __name__ == '__main__':
