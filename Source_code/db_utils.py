@@ -80,5 +80,28 @@ def add_new_user(username,password):
         if db_connection:
             db_connection.close()
 
+def area_info_usernames():
+    try:
+        db_name = 'population'
+        db_connection = _connect_to_db(db_name)
+        cursor = db_connection.cursor()
+        query = """
+        SELECT username from user_area_data
+        """
+
+        cursor.execute(query)
+        result = cursor.fetchall()
+        user_area_data_list = [x[0] for x in result]
+
+        cursor.close()
+
+    except Exception:
+        raise DbConnectionError("Failed to read data from database.")
+    finally:
+        if db_connection:
+            db_connection.close()
+            # print("Database connection closed.")
+            return user_area_data_list
+
 
 

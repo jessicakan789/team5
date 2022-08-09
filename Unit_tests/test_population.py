@@ -4,11 +4,10 @@ import unittest
 from Population import return_population
 
 
-class TestConnection(unittest.TestCase):
+class TestConnection(unittest.TestCase):                #location does exist
     def test_population_true(self):
-        expected = (563851)
+        expected = (int(563851))
         actual = return_population('somerset')
-
         self.assertEqual(expected, actual)
 
     def test_population_false(self):
@@ -17,7 +16,6 @@ class TestConnection(unittest.TestCase):
     def test_population_boundary(self):
         expected = (563851)
         actual = return_population('SomERseT')  # some letters capitalised
-
         self.assertEqual(expected, actual)
 
 

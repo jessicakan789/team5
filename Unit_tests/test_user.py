@@ -1,5 +1,5 @@
 import unittest
-from login import get_password
+from db_utils import get_password
 
 
 class PasswordTest(unittest.TestCase):
@@ -9,8 +9,10 @@ class PasswordTest(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_no_user(self):
-        with self.assertRaises(UnboundLocalError):  # unencoded_password does not exist as user does not exist
-            get_password("blah")  # user does not exist
+        expected ="a64eb7c6abe8010318b2f15cd7178699"
+        actual = get_password("LillyPoole")
+        message = "This user does not exist"
+        self.assertEqual(expected, actual, message)  # unencoded_password does not exist as user does not exist
 
 
 if __name__ == '__main__':

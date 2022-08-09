@@ -1,6 +1,7 @@
 from dbconnection import _connect_to_db
 
 
+
 def populate_table(username):
 
     user = {'username': username}
@@ -18,18 +19,15 @@ def insert_new_data(username, location, risk):
     try:
         db_name = 'population'
         db_location = location
-        db_rate = float(risk)
-
+        db_rate = float(risk* 100000)
         info = {'username': username, 'last_area' : db_location, 'last_rate' : db_rate}
         db_connection = _connect_to_db(db_name)
         cursor = db_connection.cursor()
         query = """
-        
         UPDATE user_area_data SET
            last_area = '{}', last_rate = '{}'
             WHERE username = '{}'
             """.format(
-
             info['last_area'], info['last_rate'], info['username'])
         cursor.execute(query)
         db_connection.commit()
@@ -38,6 +36,7 @@ def insert_new_data(username, location, risk):
     except Exception as exc:
         print(exc)
         return False
+
 
     finally:
         db_connection.close()
