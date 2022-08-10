@@ -26,7 +26,7 @@ class NewUserTest(unittest.TestCase):
 
     def test_error(self):
         with self.assertRaises(DbConnectionError):
-            add_new_user("blah", 1234)  # AttributeError: 'int' object has no attribute 'encode'
+            add_new_user("blah")  # TypeError: add_new_user() missing 1 required positional argument: 'password'
 
 
 if __name__ == '__main__':
