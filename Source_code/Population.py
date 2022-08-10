@@ -20,12 +20,11 @@ def return_population(input):
 
         cursor.execute(query)
 
-        for i in cursor:
-            num = i[0]
-            print("population: ", num)
+        result = cursor.fetchall()[0][0]
+        print("population: ", result)
         cursor.close()
 
-        return num
+        return result
 
     except Exception:
         print('Sorry there has been an error')
@@ -47,12 +46,11 @@ def return_locations():
 
         cursor.execute(query)
 
-        locations = []
-        for i in cursor:
-            locations.append(i[0].lower())
+        result = cursor.fetchall()
+        result_list = [x[0].lower() for x in result]
         cursor.close()
 
-        return locations
+        return result_list
 
     except TypeError:
         print('Sorry there has been an error')

@@ -1,7 +1,7 @@
 from predict import get_user_input
 from API import get_rate_by_location, calculate_risk
 from Population import return_population, return_locations
-from login import register_or_login
+from login_oop import *
 from save_search import insert_new_data, get_user_data
 from area_advice import provide_advice
 
@@ -17,8 +17,10 @@ def run():
     print('############################')
     print()
 
-    if not register_or_login():
-        exit()
+    login_status, user = register_or_login()
+
+    if not login_status:
+        exit(-1)
 
     try:
         level = input("Choose Nations or UTLA (Your Local Authority): ")
@@ -68,8 +70,11 @@ def run():
     else:
         if store_data == 'y':
             username = input('To save your information, please type in your username again: ')
-            get_user_data(username)
-            insert_new_data(username, location, risk)
+            if username.strip() == user:
+                get_user_data(username)
+                insert_new_data(username, location, risk)
+            else:
+                print("This input does not match! Data could not be saved.")
         elif store_data == 'n':
             print('No worries! Hope to see you soon!')
         else:
