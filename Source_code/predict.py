@@ -1,4 +1,5 @@
 import Levenshtein  # This package can measure the similarity between strings
+from yes_no_input import get_yes_no_input
 
 
 # Make sure strings are all lowercase, remove white space etc., before using this function
@@ -19,20 +20,28 @@ def get_similar_word(list_of_words, input_word, threshold):
 def check_similar(prob, list_of_words):
     # Iterates through each item in the list to provide a "Did you mean..." functionality to the user
     # The parameters prob and list_of_words should be fetched from the get_similar_word function
-    attempts = 0
+    # attempts = 0
 
     for word in list_of_words:
-        while attempts < 3:
-            is_similar = input("Did you mean '{}'? y/n  (Probability of match: {:.2f})".format(word, prob))
-            if is_similar.lower().strip() == "y":
+        # while attempts < 3:
+
+            is_similar = get_yes_no_input("Did you mean '{}'? y/n  (Probability of match: {:.2f})".format(word, prob))
+
+            if is_similar:
                 return word
-            elif is_similar.lower().strip() == "n":
-                attempts += 1
-                break
-            else:
-                print("Invalid input. Please type 'y' for yes or 'n' for no.")
-                attempts += 1
-                continue
+
+            # elif not is_similar:
+            #
+            # is_similar = input()
+            # if is_similar.lower().strip() == "y":
+            #     return word
+            # elif is_similar.lower().strip() == "n":
+            #     attempts += 1
+            #     break
+            # else:
+            #     print("Invalid input. Please type 'y' for yes or 'n' for no.")
+            #     attempts += 1
+            #     continue
     return None
 
 
