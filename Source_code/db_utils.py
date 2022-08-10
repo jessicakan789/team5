@@ -23,6 +23,7 @@ def get_usernames():
 
     except Exception:
         raise DbConnectionError("Failed to read data from database.")
+
     finally:
         if db_connection:
             db_connection.close()
