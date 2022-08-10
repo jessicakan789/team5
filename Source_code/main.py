@@ -1,7 +1,7 @@
 from predict import get_user_input
 from API import get_rate_by_location, calculate_risk
 from Population import return_population, return_locations
-from login_oop import *
+from login import *
 from save_search import insert_new_data, get_user_data
 from area_advice import provide_advice
 
