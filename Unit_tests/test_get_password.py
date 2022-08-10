@@ -8,7 +8,7 @@ class TestGetPassword(unittest.TestCase):
     def test_get_password_true(self, mock_username):
         username = "LouisePoole"
         mock_username.return_value = username
-        expected = ('', True)
+        expected = ('')
         actual = get_password(mock_username)
         self.assertEqual(expected, actual)
 
