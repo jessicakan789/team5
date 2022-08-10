@@ -34,19 +34,17 @@ def insert_new_data(username, location, risk):
         cursor.execute(query)
         db_connection.commit()
         cursor.close()
+        print('Your latest area and rate information is saved to your account. Thanks for using the Covid Calculator. '
+              'See you soon!')
+        return True
+
+    except ValueError:
+        return False
 
     except Exception as exc:
         print(exc)
         return False
 
-    finally:
-        db_connection.close()
-        print('Your latest area and rate information is saved to your account. Thanks for using the Covid Calculator. '
-                    'See you soon!')
-        return True
-    #
-    # except (_mysql_connector.MySQLInterfaceError, mysql.connector.errors.ProgrammingError, TypeError, ValueError):
-    #     return False
 
 
 def get_user_data(username):
