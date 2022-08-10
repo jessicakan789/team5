@@ -33,7 +33,8 @@ class NewUser(User):
 
     # Underscore before these variable names denote that they are private members
     _is_Successful = False
-    _common_passwords = ['Password123!', 'password', 'abc123!']
+    _common_passwords = ['Password123!'
+                         '', 'password', 'abc123!']
     _regex = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
 
     def is_unique(self):  # existing users would need to be fetched from database

@@ -7,8 +7,6 @@ import string
 def get_random_string():
     return ''.join(random.choice(string.ascii_lowercase) for i in range(8))
 
-
-
 class NewUserClassTests(unittest.TestCase):
 
     def test_is_unique(self):
@@ -76,7 +74,7 @@ class ExistingUserClassTests(unittest.TestCase):
         self.assertTrue(user1.login())
 
     def test_login_wrong_password(self):
-        existing_username = get_usernames()[0]
+        existing_username = get_usernames()
         existing_password = get_password(existing_username)
 
         incorrect_password = existing_password + get_random_string()
@@ -86,7 +84,7 @@ class ExistingUserClassTests(unittest.TestCase):
         self.assertFalse(user1.login())
 
     def test_login_wrong_username(self):
-        existing_username = get_usernames()[0]
+        existing_username = get_usernames()
         existing_password = get_password(existing_username)
 
         incorrect_username = existing_password + get_random_string()
@@ -94,6 +92,7 @@ class ExistingUserClassTests(unittest.TestCase):
         user1 = ExistingUser(incorrect_username, existing_password)
 
         self.assertFalse(user1.login())
+
 
 
 if __name__ == '__main__':
