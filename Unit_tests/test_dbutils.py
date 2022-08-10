@@ -25,7 +25,7 @@ class NewUserTest(unittest.TestCase):
         self.assertTrue(add_new_user("BlahBlah", "blah"))
 
     def test_error(self):
-        with self.assertRaises(DbConnectionError):
+        with self.assertRaises(TypeError):
             add_new_user("blah")  # TypeError: add_new_user() missing 1 required positional argument: 'password'
 
 
