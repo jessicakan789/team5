@@ -1,6 +1,7 @@
 import re
 from db_utils import *
 from save_search import populate_table
+from yes_no_input import get_yes_no_input
 
 
 class UsernameExistsError(Exception):
@@ -96,17 +97,17 @@ class ExistingUser(User):
 
 
 def register_or_login():
-    while True:
-        is_existing = input("Do you already have an account? y/n").strip().lower()
-        if is_existing == 'y' :
-            status = existing_user_login()
-            return status
-        elif is_existing == 'n' :
-            status = make_new_user()
-            return status
-        else:
-            print("Please enter a valid input")
-            pass
+
+    account_exists = get_yes_no_input("Do you already have an account? y/n")
+
+    if account_exists:
+        status = existing_user_login()
+
+    elif not account_exists:
+        status = make_new_user()
+
+    return status
+
 
 
 def make_new_user():
