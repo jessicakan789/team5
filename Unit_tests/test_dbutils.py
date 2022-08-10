@@ -16,13 +16,13 @@ class PasswordTest(unittest.TestCase):
 
     def test_no_user(self):
         expected = ''
-        actual = get_password("blah")  # user does not exist so returns empty string
+        actual = get_password("DoesNotExist")  # user does not exist so returns empty string
         self.assertEqual(expected, actual)
 
 
 class NewUserTest(unittest.TestCase):
     def test_valid(self):
-        self.assertTrue(add_new_user("blah", "blah"))
+        self.assertTrue(add_new_user("BlahBlah", "blah"))
 
     def test_error(self):
         with self.assertRaises(DbConnectionError):
