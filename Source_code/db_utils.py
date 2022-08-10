@@ -59,7 +59,7 @@ def get_password(username):
     finally:
         if db_connection:
             db_connection.close()
-            return final_password
+            return final_password, True
 
 
 def add_new_user(username,password):
