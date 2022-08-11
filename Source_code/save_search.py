@@ -46,7 +46,6 @@ def insert_new_data(username, location, risk):
         return False
 
 
-
 def get_user_data(username):
     try:
         db_name = 'population'
