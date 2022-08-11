@@ -45,15 +45,18 @@ def get_rate_by_location(level, location):
 
 
 def calculate_risk(risk):
-    if risk <= 0.1:
-        print("The risk of getting COVID is {} in 1000 people".format(round(risk * 1000)))
-        print("We recommend you wash your hands frequently")
+    if risk < 10:  # CDC COVID-19 Community Levels
+        print("The risk of getting COVID is {} in 100,000 people".format(
+            round(risk * 100000)))
+        print("Your risk is LOW")
         return "low"
-    elif 0.1 < risk <= 0.2:
-        print("The risk of getting COVID is {} in 1000 people".format(round(risk * 1000)))
-        print("We recommend you wear a mask")
+    elif 10 <= risk <= 19.9:
+        print("The risk of getting COVID is {} in 100,000 people".format(
+            round(risk * 100000)))
+        print("Your risk is MEDIUM")
         return "medium"
     else:
-        print("The risk of getting COVID is {} in 1000 people".format(round(risk * 1000)))
-        print("We recommend you take a LFD")
+        print("The risk of getting COVID is {} in 100,000 people".format(
+            round(risk * 100000)))
+        print("Your risk is HIGH")
         return "high"

@@ -4,11 +4,12 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from API import get_rate_by_location, calculate_risk
+from Population import return_population
 
 app = FastAPI()
 
 origins = [
-    "http://localhost:3001",
+    "*",
 ]
 
 app.add_middleware(
@@ -31,7 +32,10 @@ def read_location(location_id: str):
     nations = ['England', 'Northern', 'Ireland', 'Scotland', 'Wales']
     if location_id not in nations:
         level = 'utla'
-    result = get_rate_by_location(level, location_id)
+    rate = get_rate_by_location(level, location_id)
+    population = return_population(location_id)
+    risk = rate / population
+    result = calculate_risk(risk)
 
     # TODO return risk factor but first find out how risk number is calculated
     return {"cases": result}

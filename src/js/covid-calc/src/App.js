@@ -24,7 +24,7 @@ const Home = (props) => {
       <Box>Image Here</Box>
       <Box>
         <TextField placeholder='Enter your location' onChange={handleChange}/>
-        <Button variant="contained" onClick={handleClickEvent}/>
+        <Button variant="contained" onClick={handleClickEvent}>Button</Button>
       </Box>
       {isLoading ? <Results location={location}/> : <></>}
       
@@ -36,7 +36,8 @@ const Results = (props) => {
   const [data, setData] = useState({})
   useEffect(() => {
     const requestOptions = {
-      method: 'POST'
+      method: 'POST',
+      mode: 'no-cors'
     }
     fetch(`http://127.0.0.1:8000/locations/${props.location}`, requestOptions)
       .then(res => res.json())
