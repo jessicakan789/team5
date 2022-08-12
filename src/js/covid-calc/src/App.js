@@ -1,16 +1,35 @@
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
-import logo from './logo.svg'
-import {useState, useEffect} from 'react'
+import {useState, useCallback} from 'react'
 
 const Home = (props) => {
   const [location, setLocation] = useState('')
-  const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [err, setErr] = useState('');
-  const handleChange = (e) => setLocation(e.target.value)
-  const handleClickEvent = () => setIsLoading(!isLoading)
+  const [data, setData] = useState({})
+  const [status, setStatus] = useState('')
+
+  const getData = useCallback(() => {
+    setStatus('Loading')
+    const requestOptions = {
+      method: 'POST',
+    }
+    fetch(`http://127.0.0.1:8000/locations/${location}`, requestOptions)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error()
+        } 
+        return res.json()
+      })
+      .then(data => setData(data))
+      .then(() => setStatus('Success'))
+      .catch(() => setStatus('Error'))
+  }, [location])
+
+  const handleChange = (e) => {
+    setLocation(e.target.value)
+    console.log(location)
+  }
+
   return (
     <Box sx={{
       width: '100vw', 
@@ -21,32 +40,15 @@ const Home = (props) => {
       alignItems: 'center',
     }}>
       <Box sx={{ typography: 'h2' }}>COVID-19 Risk Calculator</Box>
-      <Box>Image Here</Box>
-      <Box>
-        <TextField placeholder='Enter your location' onChange={handleChange}/>
-        <Button variant="contained" onClick={handleClickEvent}>Button</Button>
+      <Box sx={{display: 'inline-flex'}}>
+        <TextField sx={{m: 2}} placeholder='Enter your location' onChange={handleChange}/>
+        <Button sx={{m: 2}} variant="contained" onClick={getData}>Search</Button>
       </Box>
-      {isLoading ? <Results location={location}/> : <></>}
-      
+      <Box>
+        {status === 'Loading' && <div>Loading...</div>}
+        {status === 'Error' && <div>Sorry, area type or area name not recognised.</div>}
+        {status === 'Success' && <Box sx={{ typography: 'h2' }}>{data.cases}</Box>}
     </Box>
-  )
-}
-
-const Results = (props) => {
-  const [data, setData] = useState({})
-  useEffect(() => {
-    const requestOptions = {
-      method: 'POST',
-      mode: 'no-cors'
-    }
-    fetch(`http://127.0.0.1:8000/locations/${props.location}`, requestOptions)
-      .then(res => res.json())
-      .then(data => setData(data))
-  }, [])
-
-  return (
-    <Box sx={{ typography: 'h2' }}>
-      {data && data.cases}
     </Box>
   )
 }
