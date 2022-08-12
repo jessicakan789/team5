@@ -1,14 +1,13 @@
 from concurrent.futures import process
 import mysql.connector
-from dbconfig import HOST, USER
-
+from dbconfig import HOST, USER, PASSWORD, RUN_ENV, WEB_PASSWORD
 
 # Create a database connection
 def _connect_to_db(db_name):
     cnx = mysql.connector.connect(
         host=HOST,
         user=USER,
-        # password=PASSWORD,
+        password=WEB_PASSWORD if RUN_ENV == 'WEB' else PASSWORD,
         auth_plugin='mysql_native_password',
         database=db_name
     )
