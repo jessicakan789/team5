@@ -49,14 +49,26 @@ def calculate_risk(risk):
         print("The risk of getting COVID is {} in 100,000 people".format(
             round(risk * 100000)))
         print("Your risk is LOW")
-        return "low"
+        return """
+        The risk of getting COVID is {} in 100,000 people
+        
+        Your risk is LOW
+        """.format(round(risk * 100000))
     elif 10 <= risk <= 19.9:
         print("The risk of getting COVID is {} in 100,000 people".format(
             round(risk * 100000)))
         print("Your risk is MEDIUM")
-        return "medium"
+        return """
+        The risk of getting COVID is {} in 100,000 people
+
+        Your risk is MEDIUM
+        """.format(round(risk * 100000))
     else:
         print("The risk of getting COVID is {} in 100,000 people".format(
             round(risk * 100000)))
         print("Your risk is HIGH")
-        return "high"
+        return """
+        The risk of getting COVID is {} in 100,000 people
+        
+        Your risk is HIGH
+        """.format(round(risk * 100000))
