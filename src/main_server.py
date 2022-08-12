@@ -1,6 +1,6 @@
 from typing import Union
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from API import get_rate_by_location, calculate_risk
@@ -33,9 +33,15 @@ def read_location(location_id: str):
     if location_id not in nations:
         level = 'utla'
     rate = get_rate_by_location(level, location_id)
+
+    if rate == False:
+        raise HTTPException(status_code=404, detail='UTLA not found.')
     population = return_population(location_id)
+
+    if population == False:
+        raise HTTPException(status_code=404, detail='UTLA not found.')
+
     risk = rate / population
     result = calculate_risk(risk)
 
-    # TODO return risk factor but first find out how risk number is calculated
     return {"cases": result}
