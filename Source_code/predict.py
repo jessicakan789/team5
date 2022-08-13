@@ -25,23 +25,10 @@ def check_similar(prob, list_of_words):
     for word in list_of_words:
         # while attempts < 3:
 
-            is_similar = get_yes_no_input("Did you mean '{}'? y/n  (Probability of match: {:.2f})".format(word, prob))
+            is_similar = get_yes_no_input("Did you mean '{}'? y/n  (Probability of match: {:.2f})".format(word.title(), prob))
 
             if is_similar:
                 return word
-
-            # elif not is_similar:
-            #
-            # is_similar = input()
-            # if is_similar.lower().strip() == "y":
-            #     return word
-            # elif is_similar.lower().strip() == "n":
-            #     attempts += 1
-            #     break
-            # else:
-            #     print("Invalid input. Please type 'y' for yes or 'n' for no.")
-            #     attempts += 1
-            #     continue
     return None
 
 
@@ -53,22 +40,21 @@ def get_user_input(given_options, level):
         # make everything lower case for ease
 
         if user_input in given_options:
-            print("Location {} found!".format(user_input))
             return user_input
         else:
             print("Location {} not found!".format(user_input))
             similar = get_similar_word(given_options,user_input,0.7)
 
             if similar is None:  # no matches ..
-                print("No similar locations found. Please try again.")
                 attempts += 1
+                print("No similar locations found. Please try again. ({} attempts left) ".format(3-attempts))
                 continue
             else:  # matches were found ..
                 chosen_word = check_similar(similar[0], similar[1])
 
                 if chosen_word is None:
-                    print("You have declined all possible matches. Please try again.")
                     attempts += 1
+                    print("You have declined all possible matches. Please try again. ({} attempts left) ".format(3-attempts))
                     continue
                 else:
                     return chosen_word

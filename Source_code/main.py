@@ -24,20 +24,38 @@ def run():
         exit(-1)
 
     while True:
-        try:
-            level = input("Choose Nation or UTLA (Your Local Authority): ").strip().lower()
+        while True:
+            try:
+                level = input("Choose Nation or UTLA (Your Local Authority): ").strip().lower()
 
-            if level != "utla" and level != "nation":
-                raise ValueError
+                if level != "utla" and level != "nation":
+                    raise ValueError
 
+                break
+
+            except ValueError:
+                print("Sorry wrong input format. Please try again")
+                continue
+
+        locations = return_locations()
+        location = get_user_input(locations, level)  # RETURNS MATCHED WORD
+
+        valid_nations = ['england', 'wales', 'scotland', 'northern ireland']
+
+        if level == "nation" and location not in valid_nations :
+            print("Error: The location you have selected is not a nation. Please try again.")
+        elif level == "utla" and location in valid_nations:
+            print("Error: The location you have selected is not an UTLA. Please try again.")
+        else:
             break
 
-        except ValueError:
-            print("Sorry wrong input format. Please try again")
-            continue
 
-    locations = return_locations()
-    location = get_user_input(locations, level)  # RETURNS MATCHED WORD
+
+    if location is None:
+        print("Sorry you have exceeded the maximum number of attempts. You will now be logged out.")
+        exit(-1)
+    else:
+        print("Fetching data for {}...".format(location.title()))
 
     print()
 
@@ -70,28 +88,6 @@ def run():
             print("This input does not match! Data could not be saved.")
     else:
         print('No worries! Hope to see you soon!')
-
-    # try:
-    #     store_data = input('Do you want to store your latest information? y/n : ')
-    #     if store_data.isnumeric():
-    #         raise ValueError
-    #
-    # except ValueError:
-    #     print("Sorry wrong input format. Please try again")
-    #     exit()
-    #
-    # else:
-    #     if store_data == 'y':
-    #         username = input('To save your information, please type in your username again: ')
-    #         if username.strip() == user:
-    #             get_user_data(username)
-    #             insert_new_data(username, location, risk)
-    #         else:
-    #             print("This input does not match! Data could not be saved.")
-    #     elif store_data == 'n':
-    #         print('No worries! Hope to see you soon!')
-    #     else:
-    #         print("Sorry that is not recognised, please try again some other time")
 
 
 if __name__ == '__main__':

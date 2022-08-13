@@ -132,9 +132,9 @@ def existing_user_login():
         login_user = ExistingUser(username,password)
         isSuccess = login_user.login()
 
-        attempts += 1
 
         if not isSuccess:
+            attempts += 1
             print("You have {} attempts left.".format(3-attempts))
 
     if attempts >= 3:

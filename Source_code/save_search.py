@@ -61,8 +61,10 @@ def get_user_data(username):
             last_rate = i[1]
         cursor.close()
         db_connection.close()
-        print('Last time you searched for was {} and the local rate then was {} people / 100000'.format(
-            last_area, last_rate))
+
+        if last_area is not None:
+            print('The last location you searched for was {} and the local rate then was {} people / 100000'.format(
+                last_area, last_rate))
         return True
 
     # except (_mysql_connector.MySQLInterfaceError, mysql.connector.errors.ProgrammingError, UnboundLocalError):

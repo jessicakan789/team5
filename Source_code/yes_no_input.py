@@ -8,4 +8,3 @@ def get_yes_no_input(question):
         else:
             print("Sorry, invalid input. Please try again")
             continue
-
