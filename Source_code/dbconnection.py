@@ -1,9 +1,18 @@
 import mysql.connector
 from dbconfig import HOST, USER, PASSWORD
 
-
-# Create a database connection
 def _connect_to_db(db_name):
+    """
+    Sets up a connection to the database.
+
+    :param db_name: (type: str)
+    The name of the database that is being connected to. For the COVID Calculator app this is the 'population' database.
+    :return:
+
+    cnx: (type: MySQL connector Class - <class 'mysql.connector.connection_cext.CMySQLConnection'>)
+    The connection object for the database.
+
+    """
     cnx = mysql.connector.connect(
         host=HOST,
         user=USER,
@@ -13,29 +22,3 @@ def _connect_to_db(db_name):
     )
     return cnx
 
-# #check connection works
-# #print(_connect_to_db(population))
-#
-# db_name = 'population'
-# db_connection = _connect_to_db(db_name)
-# cursor = db_connection.cursor()
-# print("Connected to database")
-#
-# # query = """
-# # SELECT Population
-# # FROM 2020population
-# # WHERE Area = 'UNITED KINGDOM'
-# # """
-#
-#
-# query = """
-# SELECT Population
-# FROM 2020population
-# WHERE Area = 'SOMERSET'
-# """
-#
-# cursor.execute(query)
-# for row in cursor:
-#     num = row[0]
-#     print(num)
-#     print(type(num))

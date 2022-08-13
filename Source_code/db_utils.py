@@ -3,10 +3,26 @@ from hashing import hash_password
 
 
 class DbConnectionError(Exception):
+    """ To be raised if connection to the database cannot be established. """
     pass
 
 
 def get_usernames():
+    """
+    Fetches usernames currently stored within the user_info table in the population database.
+
+    Raises a DbConnectionError Exception if connection to the database cannot be established, meaning that usernames
+    cannot be read. Otherwise, returns list of usernames in database.
+
+    :param:
+
+    None
+
+    :return:
+
+    user_list: (type: list)
+    A list of all usernames stored in the user_info table. These usernames are strings.
+    """
     try:
         db_name = 'population'
         db_connection = _connect_to_db(db_name)
@@ -27,11 +43,22 @@ def get_usernames():
     finally:
         if db_connection:
             db_connection.close()
-            # print("Database connection closed.")
             return user_list
 
 
 def get_password(username):
+    """
+    Gets the hashed password as stored in the user_info table in the population database corresponding to a specific
+    (existing) username.
+    Raises a DbConnectionError Exception if connection to database cannot be established.
+
+    :param username: (type: str)
+    The string username belonging to the account for which we want the password.
+
+    :return:
+    final_password: (type: str)
+    The hashed password corresponding to the user account with the given username.
+    """
     try:
         final_password = ''
         db_name = 'population'
@@ -63,11 +90,24 @@ def get_password(username):
 
 
 def add_new_user(username,password):
+    """
+    Adds a new user by writing data to the user_info table in the population database.
+
+    :param username: (type: str)
+    The string username value belonging to the new user account to be added.
+    :param password: (type: str)
+    The string password value belonging to the new user account to be added. This password should not be hashed when
+    passed in. The hashing is done inside this function, utilising the external hash_password function.
+
+    :return:
+
+    True/False: (type: bool)
+    A boolean value to signify whether the new user's account details were successfully stored in the database.
+    """
     try:
         db_name = 'population'
         db_connection = _connect_to_db(db_name)
         cursor = db_connection.cursor()
-        # print("Connected to database")
 
         query = """
             INSERT INTO user_info (username, password)
@@ -85,6 +125,8 @@ def add_new_user(username,password):
         if db_connection:
             db_connection.close()
         return True
+
+    return False
 
 
 
