@@ -1,5 +1,6 @@
 import unittest
-from db_utils import get_password, add_new_user, DbConnectionError
+from db_utils import get_password, add_new_user
+from unittest.mock import patch
 
 
 class PasswordTest(unittest.TestCase):
@@ -25,7 +26,17 @@ class NewUserTest(unittest.TestCase):
         self.assertTrue(add_new_user("BlahBlah", "blah"))
 
     def test_error(self):
-        self.assertTrue(add_new_user("blah", 1234))
+        with self.assertRaises(TypeError):
+            add_new_user("blah")  # TypeError: add_new_user() missing 1 required positional argument: 'password'
+
+    @patch('db_utils.get_password')
+    def test_get_password_true(self, mock_username):
+        username = "LouisePoole"
+        mock_username.return_value = username
+        expected = ('')
+        actual = get_password(mock_username)
+        self.assertEqual(expected, actual)
+
 
 
 if __name__ == '__main__':

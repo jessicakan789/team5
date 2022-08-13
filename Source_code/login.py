@@ -110,7 +110,6 @@ def register_or_login():
     return status
 
 
-
 def make_new_user():
     isSuccess = False
     while not isSuccess:

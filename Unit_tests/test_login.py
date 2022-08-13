@@ -66,8 +66,8 @@ class ExistingUserClassTests(unittest.TestCase):
 
     def test_login_success(self):
         # This username and password needs to be in the database for test to pass
-        existing_username = 'emily2'
-        existing_password = 'Pumpkin123!'
+        existing_username = 'LouisePoole1'
+        existing_password = 'L0u1sep00le@'
 
         user1 = ExistingUser(existing_username, existing_password)
 

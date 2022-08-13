@@ -31,11 +31,14 @@ give users some context to their local rate.
 | API.py | Connects to the API and fetches COVID rate info |
 | predict.py | Predicts what area name user desires |
 | dbconfig.py | Holds SQL login details |
-| dbconnection.py | Connects to SQL database about population and account info |
+| dbconnection.py | Connects to SQL database |
+| dbutils.py | Modifies population and account info in SQL database |
+| hashing.py | Hashes passwords |
 | Population.py | Allows user to access population database info |
 | login.py | Allows user to login/create account |
 | area_advice.py | Gives user government advice for their nation |
 | save_search.py | Saves location and risk from previous search |
+| yes_no_input.py | Returns True for "y" and False for "n" |
 
 ## Unit tests
 To run unit tests in PyCharm please follow these steps:
