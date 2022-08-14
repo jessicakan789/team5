@@ -136,7 +136,7 @@ def register_or_login():
 
     """
 
-    account_exists = get_yes_no_input("Do you already have an account? y/n")
+    account_exists = get_yes_no_input("Do you already have an account? y/n ")
 
     if account_exists:
         print("Please enter your Log-In details... ")
