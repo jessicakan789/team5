@@ -22,6 +22,34 @@ give users some context to their local rate.
 [list of areas](https://github.com/jessicakan789/team5/tree/main/Research/area_names.txt)
 6. Find out how likely you are to get COVID
 
+How to use(web-application)
+
+Go to the frontend branch in the team-5 repo.
+
+```sh
+git checkout frontend
+```
+
+
+1. Export environment variables to shell in terminal
+```sh
+export RUN_ENV=WEB
+export WEB_PASSWORD = "insert sql password here"
+```
+
+2. Run Backend
+```sh
+cd /src
+
+uvicorn main_server:app
+```
+
+3. Run Frontend
+```sh
+cd /src/js/covid-calc
+
+npm start
+```
 
 ## File descriptions
 
@@ -39,6 +67,7 @@ give users some context to their local rate.
 | area_advice.py | Gives user government advice for their nation |
 | save_search.py | Saves location and risk from previous search |
 | yes_no_input.py | Returns True for "y" and False for "n" |
+| main_server  | Runs web server |
 
 ## Unit tests
 To run unit tests in PyCharm please follow these steps:
