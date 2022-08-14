@@ -21,10 +21,9 @@ app.add_middleware(
 )
 
 
-@app.get('/')
-def read_root():
-    return {"Hello": "Word"}
 
+# Route
+# Function read_location handles the location that is passed in.
 
 @app.post("/locations/{location_id}")
 def read_location(location_id: str):
