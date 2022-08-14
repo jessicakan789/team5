@@ -1,3 +1,6 @@
+""""This contains a function which connects to the database to identify the nation that the
+searched area is in. It then returns the relevant text file depending on the nation"""
+
 from dbconnection import _connect_to_db
 
 
