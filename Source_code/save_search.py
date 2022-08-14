@@ -2,6 +2,15 @@ from dbconnection import _connect_to_db
 
 
 def populate_table(username):
+    """
+    Inserts a new entry into the user_area_data table in the population database. Should be used when a new account
+    is created, to prepare for future functionality.
+
+    :param username: (type: str)
+    The username belonging to the account for which an entry is being made.
+
+    :return: None
+    """
 
     user = {'username': username}
     db_name = 'population'
@@ -15,6 +24,20 @@ def populate_table(username):
 
 
 def insert_new_data(username, location, risk):
+    """
+    Stores data in the user_area_data in the population database. Specifically, stores the area and rate that the
+    user has checked using the app against their username. This can then be compared within any future uses.
+
+    :param username: (type: str)
+    The username of the user whose data is being stored.
+    :param location: (type: str)
+    The location searched by the user.
+    :param risk: (type: float)
+    The numerical risk calculated for the user based on COVID cases in their location.
+
+    :return:
+    True/False (type: bool): A signifier of whether data was successfully saved in the database.
+    """
     try:
         db_name = 'population'
         db_location = location
@@ -47,6 +70,16 @@ def insert_new_data(username, location, risk):
 
 
 def get_user_data(username):
+    """
+    Gets the last searched location and corresponding rate as stored in the user_area_data table in the population
+    database.
+
+    :param username: (type: str)
+    The username belonging to the account whose data we are fetching.
+
+    :return:
+    True/False (type: bool): A signifier of whether data was successfully retrieved from the database.
+    """
     try:
         db_name = 'population'
         db_connection = _connect_to_db(db_name)
@@ -65,9 +98,6 @@ def get_user_data(username):
             print('The last location you searched for was {} and the local rate then was {} people / 100000'.format(
                 last_area, last_rate))
         return True
-
-    # except (_mysql_connector.MySQLInterfaceError, mysql.connector.errors.ProgrammingError, UnboundLocalError):
-    #     return False
 
     except Exception as exc:
         print(exc)

@@ -1,13 +1,18 @@
 from dbconnection import _connect_to_db
 
-"""
-function to query db and return information
-makes input case insensitive
-returns a tuple so this is -> int
-"""
-
 
 def return_population(input):
+    """
+    Fetches the population of the given input location from cutdownpopulation table in the population database.
+
+    :param input: (type: str)
+    This should be the location that we are getting the population of.
+
+    :return:
+    Either returns result (type: int) which is the fetched population number.
+    Otherwise, returns False (type: bool) which signifies that the population couldn't be fetched.
+    """
+
     try:
         db_name = 'population'
         db_connection = _connect_to_db(db_name)
@@ -21,7 +26,7 @@ def return_population(input):
         cursor.execute(query)
 
         result = cursor.fetchall()[0][0]
-        print("population: ", result)
+        print("The overall population of {} is {}. ".format(input, result))
         cursor.close()
 
         return result
@@ -31,10 +36,17 @@ def return_population(input):
         return False
 
 
-# print(return_population('SoMerset'))
-
-#  FETCH LOCATIONS FROM DATABASE AND STORE IN LIST
 def return_locations():
+    """
+    Fetches the locations as stored within the cutdownpopulation table in the database.
+
+    Note that this table has been edited to only contain locations compatible with the API.
+
+    :return:
+    result_list (type: list)
+    This is a list of all locations stored within the database. The locations are str types.
+    """
+
     try:
         db_name = 'population'
         db_connection = _connect_to_db(db_name)

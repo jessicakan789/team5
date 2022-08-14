@@ -8,6 +8,11 @@ from yes_no_input import get_yes_no_input
 
 
 def run():
+    """
+    This function acts as the main body of the COVID calculator app. It works by calling the imported functions as
+    previously defined in other files, and also by defining its own logic.
+    """
+
     print('############################')
     print('Hello, welcome to the COVID calculator')
     print('Please use this information as one part of your own personal risk assessment')
@@ -48,8 +53,6 @@ def run():
             print("Error: The location you have selected is not an UTLA. Please try again.")
         else:
             break
-
-
 
     if location is None:
         print("Sorry you have exceeded the maximum number of attempts. You will now be logged out.")
@@ -93,5 +96,3 @@ def run():
 if __name__ == '__main__':
     run()
 
-# Example
-# black pool
