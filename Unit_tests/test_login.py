@@ -57,7 +57,6 @@ class NewUserClassTests(unittest.TestCase):
         with self.assertRaises(RegexError):
             user1.password_regex()
 
-
     def test_password_regex_valid(self):
         user1 = NewUser('test_user','Password123!')
         self.assertTrue(user1.password_regex())
@@ -93,7 +92,6 @@ class ExistingUserClassTests(unittest.TestCase):
         user1 = ExistingUser(incorrect_username, existing_password)
 
         self.assertFalse(user1.login())
-
 
 
 if __name__ == '__main__':
