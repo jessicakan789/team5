@@ -41,6 +41,11 @@ Then run:
 
 How to use(web)
 
+Go to the frontend branch in the team-5 repo.
+
+```sh
+git checkout frontend
+```
 
 
 1. Export environment variables to shell in terminal
