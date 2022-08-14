@@ -12,21 +12,23 @@ rates using an API and database. The COVID calculator gives the user simple advi
 catching covid based on percentage risk or some scale of our own. Also, it compares local rates to nationwide rates to 
 give users some context to their local rate.
 
+
 ## Pre-requisites and Dependencies
-For the frontend Javascript is used so please install these packages in PyCharm:
-* nodejs
-* npm
-* uvicorn
-* fastapi
 
-Install nodejs: https://nodejs.org/en/download/
+1. Python(v3.6) - link to installation
+a. Clone the repo
+b. pip install -r requirements.txt: installs all py dependencies (installs uvicorn and fastAPI)
 
+2. For the frontend Javascript is used so please install these packages
+* Install nodejs: https://nodejs.org/en/download/
+
+Change directory to js/covid-calc.
 Then run:
 
-    npm install
+    npm install 
 
 
-## How to use
+## How to use(locally)
 
 1. Create database by running [SQL file](https://github.com/jessicakan789/team5/tree/main/Database)
 2. Download [source code](https://github.com/jessicakan789/team5/tree/main/Source%20code)
@@ -37,6 +39,29 @@ Then run:
 [list of areas](https://github.com/jessicakan789/team5/tree/main/Research/area_names.txt)
 7. Find out how likely you are to get COVID-19
 
+How to use(web)
+
+
+
+1. Export environment variables to shell in terminal
+```sh
+export RUN_ENV=WEB
+export WEB_PASSWORD = "insert sql password here"
+```
+
+2. Run Backend
+```sh
+cd /src
+
+uvicorn main_server:app
+```
+
+3. Run Frontend
+```sh
+cd /src/js/covid-calc
+
+npm start
+```
 
 ## File descriptions
 
@@ -49,6 +74,8 @@ Then run:
 | dbconnection.py | Connects to SQL database about population and account info |
 | User.py | Allows user to login/create account |
 | Population.py | Allows user to access population database info |
+| main.server | Runs webserver
+|
 
 ## Unit tests
 To run unit tests in PyCharm please follow these steps:
