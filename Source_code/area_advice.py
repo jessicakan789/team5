@@ -1,15 +1,18 @@
-""""This contains a function which connects to the database to identify the nation that the
-searched area is in. It then returns the relevant text file depending on the nation"""
-
 from dbconnection import _connect_to_db
 
 
 def provide_advice(area):
     """
-    ??
+    This function connects to the database to identify the nation that the search area is in. It returns the
+    relevant text file, containing COVID advice, depending on the nation identified.
 
-    :param area:
+    :param area: (type: str)
+    The location for which we would live to identify the nation of. i.e. if the area = 'Leeds', the nation is 'England'.
+
     :return:
+    If successful, returns a string value corresponding to the nation identified.
+
+    Otherwise, returns False (type: bool) to signify that the nation could not be identified.
     """
     db_name = 'population'
     db_connection = _connect_to_db(db_name)

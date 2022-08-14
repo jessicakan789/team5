@@ -1,6 +1,7 @@
 import mysql.connector
 from dbconfig import HOST, USER, PASSWORD
 
+
 def _connect_to_db(db_name):
     """
     Sets up a connection to the database.
