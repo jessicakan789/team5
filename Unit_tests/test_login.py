@@ -3,9 +3,11 @@ from login import *
 import random
 import string
 
+
 # Generate random string for use in some unit-tests
 def get_random_string():
     return ''.join(random.choice(string.ascii_lowercase) for i in range(8))
+
 
 class NewUserClassTests(unittest.TestCase):
 
@@ -24,7 +26,6 @@ class NewUserClassTests(unittest.TestCase):
         user1 = NewUser(existing_username,'Password123!')
         with self.assertRaises(UsernameExistsError):
             user1.is_unique()
-
 
     def test_common_passwords_checker(self):
         user1 = NewUser('test_user','Password123!')
