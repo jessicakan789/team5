@@ -22,7 +22,7 @@ give users some context to their local rate.
 [list of areas](https://github.com/jessicakan789/team5/tree/main/Research/area_names.txt)
 6. Find out how likely you are to get COVID
 
-How to use(web-application)
+## How to use(web-application)
 
 Go to the frontend branch in the team-5 repo.
 
