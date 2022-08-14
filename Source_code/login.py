@@ -164,6 +164,9 @@ def make_new_user():
     isSuccess = False
     while not isSuccess:
         username = input("Username: ")
+        print("Your password must be at-least 8 characters long, "
+              "containing at-least 1 uppercase letter, 1 lowercase letter, 1 number"
+              "and 1 special character!")
         password = input("Password: ")
 
         new_user = NewUser(username,password)
