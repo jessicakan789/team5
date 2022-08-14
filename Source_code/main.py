@@ -23,11 +23,14 @@ def run():
     print('############################')
     print()
 
+    # Prompt user to login or register
     login_status, user = register_or_login()
 
+    # If login/registration process is unsuccessful, exit
     if not login_status:
         exit(-1)
 
+    # Ask User whether they are searching for an UTLA or Nation
     while True:
         while True:
             try:
@@ -42,9 +45,11 @@ def run():
                 print("Sorry wrong input format. Please try again")
                 continue
 
+    # Ask the user to input their location
         locations = return_locations()
         location = get_user_input(locations, level)  # RETURNS MATCHED WORD
 
+    # Check that their input format was correct
         valid_nations = ['england', 'wales', 'scotland', 'northern ireland']
 
         if level == "nation" and location not in valid_nations :
@@ -54,6 +59,8 @@ def run():
         else:
             break
 
+    # If the user exceeded their maximum number of attempts, exit.
+
     if location is None:
         print("Sorry you have exceeded the maximum number of attempts. You will now be logged out.")
         exit(-1)
@@ -62,6 +69,7 @@ def run():
 
     print()
 
+    # Fetch local data from API for the input location
     print(location.title())
     rate = get_rate_by_location(level.lower(), location.title())
     pop = return_population(location.title())
@@ -69,25 +77,32 @@ def run():
     calculate_risk(risk)
     print()
 
+    # Fetch UK-wide data from the API for comparison
     print("UK")
     uk_rate = get_rate_by_location("overview", None)
     uk_pop = return_population("UNITED KINGDOM")
     uk_risk = uk_rate/uk_pop
     calculate_risk(uk_risk)
 
+    # Ask user if they'd like to view the current COVID advice
     advice = get_yes_no_input('Would you like your national advice? y/n : ')
 
+    # If YES, print the advice to the terminal
     if advice:
         provide_advice(location)            # need to use location to get nation from DB
 
+    # Ask the user if they'd like to store their information locally
     store_data = get_yes_no_input('Do you want to store your latest information? y/n : ')
 
+    # If YES, ask user to enter their username again for security
     if store_data:
         username = input('To save your information, please type in your username again: ')
+        # If username matches, inserts data into the database
         if username.strip() == user:
             get_user_data(username)
             insert_new_data(username, location, risk)
         else:
+             # If the username does not match, output and exit.
             print("This input does not match! Data could not be saved.")
     else:
         print('No worries! Hope to see you soon!')
