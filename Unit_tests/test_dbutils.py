@@ -9,12 +9,6 @@ class PasswordTest(unittest.TestCase):
         actual = get_password("LouisePoole1")
         self.assertEqual(expected, actual)
 
-    # def test_no_user(self):
-    #     expected ="a64eb7c6abe8010318b2f15cd7178699"
-    #     actual = get_password("LillyPoole")
-    #     message = "This user does not exist"
-    #     self.assertEqual(expected, actual, message)  # unencoded_password does not exist as user does not exist
-
     def test_no_user(self):
         expected = ''
         actual = get_password("DoesNotExist")  # user does not exist so returns empty string
@@ -36,6 +30,7 @@ class NewUserTest(unittest.TestCase):
         expected = ('')
         actual = get_password(mock_username)
         self.assertEqual(expected, actual)
+
 
 
 if __name__ == '__main__':

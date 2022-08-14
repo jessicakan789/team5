@@ -2,6 +2,12 @@ from dbconnection import _connect_to_db
 
 
 def provide_advice(area):
+    """
+    ??
+
+    :param area:
+    :return:
+    """
     db_name = 'population'
     db_connection = _connect_to_db(db_name)
     cursor = db_connection.cursor()
@@ -38,7 +44,6 @@ def provide_advice(area):
 
     return False
 
-# provide_advice('Northern Ireland')
 
 
 
